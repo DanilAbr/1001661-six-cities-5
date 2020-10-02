@@ -15,4 +15,5 @@ App.propTypes = {
   placesCount: PropTypes.number.isRequired,
 };
 
+
 export default App;
