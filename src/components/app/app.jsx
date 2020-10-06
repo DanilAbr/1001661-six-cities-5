@@ -8,7 +8,7 @@ import OfferScreen from "../offer-screen/offer-screen";
 
 
 const App = (props) => {
-  const {placesCount} = props;
+  const {placesCount, offers, reviews} = props;
 
   return (
     <BrowserRouter>
@@ -31,6 +31,30 @@ const App = (props) => {
 
 App.propTypes = {
   placesCount: PropTypes.number.isRequired,
+  offers: PropTypes.arrayOf(PropTypes.shape({
+    images: PropTypes.arrayOf(PropTypes.string.isRequired),
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    isPremium: PropTypes.bool.isRequired,
+    type: PropTypes.string.isRequired,
+    rating: PropTypes.string.isRequired,
+    bedroomsCount: PropTypes.string.isRequired,
+    maxAdults: PropTypes.string.isRequired,
+    insideItems: PropTypes.arrayOf(PropTypes.string.isRequired),
+    price: PropTypes.string.isRequired,
+    owner: PropTypes.shape({
+      avatar: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      isSuper: PropTypes.bool.isRequired,
+    }).isRequired,
+  })).isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.shape({
+    avatar: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    rating: PropTypes.string.isRequired,
+    date: PropTypes.instanceOf(Date).isRequired,
+    text: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 
