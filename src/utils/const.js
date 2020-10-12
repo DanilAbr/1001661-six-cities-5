@@ -1,8 +1,6 @@
-const TYPES = [`apartment`, `room`, `house`, `hotel`];
+const TYPES = [`Apartment`, `Room`, `House`, `Hotel`];
 const TITLES = [`Beautiful & luxurious apartment at great location`, `Wood and stone place`, `Canal View Prinsengracht`, `Nice, cozy, warm big bed apartment`];
-const DESCRIPTION = `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-
-  An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`;
+const DESCRIPTION = `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`;
 const INSIDE_ITEMS = [`Wi-Fi`, `Washing machine`, `Towels`, `Heating`, `Coffee machine`, `Baby seat`, `Kitchen`, `Dishwasher`, `Cabel TV`, `Fridge`];
 const AVATAR_URL = `https://api.adorable.io/avatars/128`;
 const NAMES = [`Alexandra`, `Ivan`, `Danila`, `Anna`, `Igor`];

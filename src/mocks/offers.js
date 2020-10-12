@@ -1,3 +1,4 @@
+import {nanoid} from 'nanoid';
 import {
   AVATAR_URL,
   DESCRIPTION,
@@ -11,8 +12,8 @@ import {
   OFFERS_COUNT,
   TITLES,
   TYPES,
-} from './utils/const';
-import {getRandomArray, getRandomBoolean, getRandomItemOfArray, getRandomNumber} from './utils/utils';
+} from '../utils/const';
+import {getRandomArray, getRandomBoolean, getRandomItemOfArray, getRandomNumber} from '../utils/utils';
 
 
 const getRandomSrc = () => `http://picsum.photos/260/200?r=${Math.random()}`;
@@ -38,11 +39,15 @@ function generateOffer() {
       avatar: `${AVATAR_URL}/${Math.random()}`, // string
       name: getRandomItemOfArray(NAMES), // string
       isSuper: getRandomBoolean(), // boolean
-    }
+    },
+    id: nanoid(),
   };
 }
 
-const offers = new Array(OFFERS_COUNT).fill(``).map(generateOffer);
+const offers =
+  new Array(OFFERS_COUNT)
+    .fill(``)
+    .map(generateOffer);
 
 
 export default offers;
