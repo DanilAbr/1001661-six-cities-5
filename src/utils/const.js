@@ -4,7 +4,7 @@ const DESCRIPTION = `A quiet cozy and picturesque that hides behind a a river by
 const INSIDE_ITEMS = [`Wi-Fi`, `Washing machine`, `Towels`, `Heating`, `Coffee machine`, `Baby seat`, `Kitchen`, `Dishwasher`, `Cabel TV`, `Fridge`];
 const AVATAR_URL = `https://api.adorable.io/avatars/128`;
 const NAMES = [`Alexandra`, `Ivan`, `Danila`, `Anna`, `Igor`];
-const REVIEWS_TEXT = `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`
+const REVIEWS_TEXT = `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`;
 
 const IMAGES_COUNT = 6;
 const OFFERS_COUNT = 4;
