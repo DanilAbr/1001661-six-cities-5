@@ -25,29 +25,24 @@ const getImages = () => getRandomArray(new Array(IMAGES_COUNT).fill(``).map(getR
 
 function generateOffer() {
   return {
-    images: getImages(), // Array // string
-    title: getRandomTitle(), // string
-    description: DESCRIPTION, // string
-    isPremium: getRandomBoolean(), // boolean
-    type: getRandomType(), // string
-    rating: getRandomNumber(MAX_RATING), // string
-    bedroomsCount: getRandomNumber(MAX_BEDROOMS_COUNT), // string
-    maxAdults: getRandomNumber(MAX_ADULTS_COUNT), // string
-    insideItems: getRandomArray(INSIDE_ITEMS), // Array // string
-    price: getRandomPrice(), // string
-    owner: { // Object
-      avatar: `${AVATAR_URL}/${Math.random()}`, // string
-      name: getRandomItemOfArray(NAMES), // string
-      isSuper: getRandomBoolean(), // boolean
+    images: getImages(),
+    title: getRandomTitle(),
+    description: DESCRIPTION,
+    isPremium: getRandomBoolean(),
+    type: getRandomType(),
+    rating: getRandomNumber(MAX_RATING),
+    bedroomsCount: getRandomNumber(MAX_BEDROOMS_COUNT),
+    maxAdults: getRandomNumber(MAX_ADULTS_COUNT),
+    insideItems: getRandomArray(INSIDE_ITEMS),
+    price: getRandomPrice(),
+    owner: {
+      avatar: `${AVATAR_URL}/${Math.random()}`,
+      name: getRandomItemOfArray(NAMES),
+      isSuper: getRandomBoolean(),
     },
     id: nanoid(),
   };
 }
 
-const offers =
-  new Array(OFFERS_COUNT)
-    .fill(``)
-    .map(generateOffer);
 
-
-export default offers;
+export default Array.from({length: OFFERS_COUNT}, generateOffer);

@@ -5,19 +5,14 @@ import {nanoid} from 'nanoid';
 
 function generateReview() {
   return {
-    avatar: `${AVATAR_URL}/${Math.random()}`, // string
-    name: getRandomItemOfArray(NAMES), // string
-    rating: getRandomNumber(MAX_RATING), // string
+    avatar: `${AVATAR_URL}/${Math.random()}`,
+    name: getRandomItemOfArray(NAMES),
+    rating: getRandomNumber(MAX_RATING),
     date: new Date(),
     text: REVIEWS_TEXT,
     id: nanoid(),
   };
 }
 
-const reviews =
-  new Array(REVIEWS_COUNT)
-    .fill(``)
-    .map(generateReview);
 
-
-export default reviews;
+export default Array.from({length: REVIEWS_COUNT}, generateReview);
