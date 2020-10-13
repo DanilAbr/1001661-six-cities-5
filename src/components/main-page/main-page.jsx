@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import OfferList from '../offer-list/offer-list';
+import offersProp from '../offer-list/offers.prop';
 
 
 const MainPage = (props) => {
@@ -112,8 +113,8 @@ const MainPage = (props) => {
 
 
 MainPage.propTypes = {
+  offers: offersProp,
   placesCount: PropTypes.number.isRequired,
-  offers: PropTypes.arrayOf(PropTypes.shape).isRequired,
   onOfferCardClick: PropTypes.func.isRequired,
 };
 

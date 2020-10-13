@@ -1,6 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import NewReview from '../new-review/new-review';
+import offerProp from '../offer-card/offer.prop';
+import reviewsProp from './reviews.prop';
 
 
 const OfferScreen = (props) => {
@@ -253,15 +254,11 @@ const OfferScreen = (props) => {
   );
 };
 
+
 OfferScreen.propTypes = {
-  offer: PropTypes.object.isRequired,
-  reviews: PropTypes.arrayOf(PropTypes.shape({
-    avatar: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
-    date: PropTypes.instanceOf(Date).isRequired,
-    text: PropTypes.string.isRequired,
-  })).isRequired
+  offer: offerProp,
+  reviews: reviewsProp,
 };
+
 
 export default OfferScreen;

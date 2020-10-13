@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from "prop-types";
+import offerProp from '../offer-card/offer.prop';
 
 
 const FavoritesCard = (props) => {
   const {offer} = props;
-  const type = offer.type.slice(0, 1).toUpperCase() + offer.type.slice(1);
 
   return (
     <article className="favorites__card place-card">
@@ -35,14 +34,14 @@ const FavoritesCard = (props) => {
         <h2 className="place-card__name">
           <a href="#">{offer.title}</a>
         </h2>
-        <p className="place-card__type">{type}</p>
+        <p className="place-card__type">{offer.type}</p>
       </div>
     </article>
   );
 };
 
 FavoritesCard.propTypes = {
-  offer: PropTypes.object.isRequired,
+  offer: offerProp,
 };
 
 export default FavoritesCard;

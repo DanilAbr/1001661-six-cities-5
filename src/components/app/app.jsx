@@ -5,6 +5,8 @@ import LoginScreen from '../login-screen/login-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';
 import OfferScreen from '../offer-screen/offer-screen';
 import PropTypes from 'prop-types';
+import offersProp from '../offer-list/offers.prop';
+import reviewsProp from '../offer-screen/reviews.prop';
 
 
 const App = (props) => {
@@ -54,8 +56,8 @@ const App = (props) => {
 
 App.propTypes = {
   placesCount: PropTypes.number.isRequired,
-  offers: PropTypes.array.isRequired,
-  reviews: PropTypes.array.isRequired,
+  offers: offersProp,
+  reviews: reviewsProp,
 };
 
 

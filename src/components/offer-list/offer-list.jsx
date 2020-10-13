@@ -1,22 +1,20 @@
 import React, {PureComponent} from 'react';
 import OfferCard from '../offer-card/offer-card';
 import PropTypes from 'prop-types';
+import offersProp from '../offer-list/offers.prop';
 
 
 class OfferList extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      activeOffer: null
-    };
+
+    this.state = {activeOffer: null};
 
     this._handleOfferHover = this._handleOfferHover.bind(this);
   }
 
   _handleOfferHover(id) {
-    this.setState({
-      activeOffer: id,
-    });
+    this.setState({activeOffer: id});
   }
 
   render() {
@@ -37,8 +35,9 @@ class OfferList extends PureComponent {
   }
 }
 
+
 OfferList.propTypes = {
-  offers: PropTypes.array.isRequired,
+  offers: offersProp,
   onOfferCardClick: PropTypes.func.isRequired,
 };
 

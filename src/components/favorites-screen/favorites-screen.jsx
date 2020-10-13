@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from "prop-types";
-import FavoritesList from "../favorites-list/favorites-list";
+import FavoritesList from '../favorites-list/favorites-list';
+import offersProp from '../offer-list/offers.prop';
 
 
 const FavoritesScreen = (props) => {
@@ -74,8 +74,10 @@ const FavoritesScreen = (props) => {
   );
 };
 
+
 FavoritesScreen.propTypes = {
-  offers: PropTypes.array.isRequired,
+  offers: offersProp,
 };
+
 
 export default FavoritesScreen;

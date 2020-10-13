@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from "prop-types";
-import FavoritesCard from "../favorites-card/favorites-card";
+import FavoritesCard from '../favorites-card/favorites-card';
+import offersProp from '../offer-list/offers.prop';
 
 
 const FavoritesList = (props) => {
@@ -18,8 +18,9 @@ const FavoritesList = (props) => {
   );
 };
 
+
 FavoritesList.propTypes = {
-  offers: PropTypes.array.isRequired,
+  offers: offersProp,
 };
 
 
