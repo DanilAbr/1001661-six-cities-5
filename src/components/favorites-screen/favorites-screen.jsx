@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FavoritesList from '../favorites-list/favorites-list';
 import offersProp from '../offer-list/offers.prop';
 
 
 const FavoritesScreen = (props) => {
-  const {offers} = props;
+  const {offers, onOfferCardClick} = props;
 
   return (
     <div className="page">
@@ -45,6 +46,7 @@ const FavoritesScreen = (props) => {
                   </div>
                 </div>
                 <FavoritesList
+                  onOfferCardClick={onOfferCardClick}
                   offers={offers}
                 />
               </li>
@@ -77,6 +79,7 @@ const FavoritesScreen = (props) => {
 
 FavoritesScreen.propTypes = {
   offers: offersProp,
+  onOfferCardClick: PropTypes.func.isRequired,
 };
 
 

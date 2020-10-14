@@ -36,7 +36,7 @@ function generateOffer() {
     insideItems: getRandomArray(INSIDE_ITEMS),
     price: getRandomPrice(),
     owner: {
-      avatar: `${AVATAR_URL}/${Math.random()}`,
+      avatar: `${AVATAR_URL}/${Math.ceil(Math.random() * 3)}`,
       name: getRandomItemOfArray(NAMES),
       isSuper: getRandomBoolean(),
     },

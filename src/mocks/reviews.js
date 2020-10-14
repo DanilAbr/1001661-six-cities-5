@@ -5,7 +5,7 @@ import {nanoid} from 'nanoid';
 
 function generateReview() {
   return {
-    avatar: `${AVATAR_URL}/${Math.random()}`,
+    avatar: `${AVATAR_URL}/${Math.ceil(Math.random() * 3)}`,
     name: getRandomItemOfArray(NAMES),
     rating: getRandomNumber(MAX_RATING),
     date: new Date(),

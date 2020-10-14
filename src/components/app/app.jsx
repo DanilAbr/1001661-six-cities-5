@@ -34,8 +34,12 @@ const App = (props) => {
           )}
         />
         <Route exact path="/favorites"
-          render={() => (
+          render={({history}) => (
             <FavoritesScreen
+              onOfferCardClick={(evt) => {
+                evt.preventDefault();
+                history.push(`/offer`);
+              }}
               offers={offers}
             />
           )}

@@ -21,7 +21,7 @@ const OfferScreen = (props) => {
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
                   <a className="header__nav-link header__nav-link--profile" href="#">
-                    <div className="header__avatar-wrapper user__avatar-wrapper"></div>
+                    <div className="header__avatar-wrapper user__avatar-wrapper"/>
                     <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
                   </a>
                 </li>
@@ -55,14 +55,14 @@ const OfferScreen = (props) => {
                 </h1>
                 <button className="property__bookmark-button button" type="button">
                   <svg className="property__bookmark-icon" width="31" height="33">
-                    <use xlinkHref="#icon-bookmark"></use>
+                    <use xlinkHref="#icon-bookmark"/>
                   </svg>
                   <span className="visually-hidden">To bookmarks</span>
                 </button>
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: offer.rating * 20 + `%`}}></span>
+                  <span style={{width: offer.rating * 20 + `%`}}/>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{offer.rating}</span>
@@ -124,7 +124,7 @@ const OfferScreen = (props) => {
                       <div className="reviews__info">
                         <div className="reviews__rating rating">
                           <div className="reviews__stars rating__stars">
-                            <span style={{width: review.rating * 20 + `%`}}></span>
+                            <span style={{width: review.rating * 20 + `%`}}/>
                             <span className="visually-hidden">Rating</span>
                           </div>
                         </div>
@@ -145,7 +145,7 @@ const OfferScreen = (props) => {
               </section>
             </div>
           </div>
-          <section className="property__map map"></section>
+          <section className="property__map map"/>
         </section>
         <div className="container">
           <section className="near-places places">
@@ -165,14 +165,14 @@ const OfferScreen = (props) => {
                     </div>
                     <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
                       <svg className="place-card__bookmark-icon" width="18" height="19">
-                        <use xlinkHref="#icon-bookmark"></use>
+                        <use xlinkHref="#icon-bookmark"/>
                       </svg>
                       <span className="visually-hidden">In bookmarks</span>
                     </button>
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style={{width: `80%`}}></span>
+                      <span style={{width: `80%`}}/>
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
@@ -197,14 +197,14 @@ const OfferScreen = (props) => {
                     </div>
                     <button className="place-card__bookmark-button button" type="button">
                       <svg className="place-card__bookmark-icon" width="18" height="19">
-                        <use xlinkHref="#icon-bookmark"></use>
+                        <use xlinkHref="#icon-bookmark"/>
                       </svg>
                       <span className="visually-hidden">To bookmarks</span>
                     </button>
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style={{width: `80%`}}></span>
+                      <span style={{width: `80%`}}/>
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
@@ -229,14 +229,14 @@ const OfferScreen = (props) => {
                     </div>
                     <button className="place-card__bookmark-button button" type="button">
                       <svg className="place-card__bookmark-icon" width="18" height="19">
-                        <use xlinkHref="#icon-bookmark"></use>
+                        <use xlinkHref="#icon-bookmark"/>
                       </svg>
                       <span className="visually-hidden">To bookmarks</span>
                     </button>
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style={{width: `100%`}}></span>
+                      <span style={{width: `100%`}}/>
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>

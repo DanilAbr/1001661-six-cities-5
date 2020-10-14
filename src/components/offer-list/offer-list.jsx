@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
-import OfferCard from '../offer-card/offer-card';
 import PropTypes from 'prop-types';
+import OfferCard from '../offer-card/offer-card';
 import offersProp from '../offer-list/offers.prop';
 
 
