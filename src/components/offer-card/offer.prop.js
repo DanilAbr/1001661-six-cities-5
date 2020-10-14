@@ -11,6 +11,7 @@ export default PropTypes.shape({
   bedroomsCount: PropTypes.number.isRequired,
   maxAdults: PropTypes.number.isRequired,
   insideItems: PropTypes.arrayOf(PropTypes.string.isRequired),
+  coords: PropTypes.array.isRequired,
   price: PropTypes.number.isRequired,
   owner: PropTypes.shape({
     avatar: PropTypes.string.isRequired,

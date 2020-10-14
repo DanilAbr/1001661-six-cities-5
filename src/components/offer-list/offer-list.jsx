@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import OfferCard from '../offer-card/offer-card';
 import offersProp from '../offer-list/offers.prop';
+import OfferCard from '../offer-card/offer-card';
 
 
 class OfferList extends PureComponent {
@@ -18,16 +18,17 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    const {offers, onOfferCardClick} = this.props;
+    const {offers, onOfferCardClick, isFavorites} = this.props;
 
     return (
-      <div className="cities__places-list places__list tabs__content">
+      <div className={isFavorites ? `favorites__places` : `cities__places-list places__list tabs__content`}>
         {offers.map((offer) =>
           <OfferCard
+            key={offer.id}
             onOfferCardClick={onOfferCardClick}
             onHover={this._handleOfferHover}
+            isFavorites={isFavorites}
             offer={offer}
-            key={offer.id}
           />
         )}
       </div>
@@ -39,6 +40,7 @@ class OfferList extends PureComponent {
 OfferList.propTypes = {
   offers: offersProp,
   onOfferCardClick: PropTypes.func.isRequired,
+  isFavorites: PropTypes.bool,
 };
 
 

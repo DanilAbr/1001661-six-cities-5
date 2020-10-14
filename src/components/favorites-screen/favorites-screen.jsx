@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FavoritesList from '../favorites-list/favorites-list';
 import offersProp from '../offer-list/offers.prop';
+import OfferList from '../offer-list/offer-list';
 
 
 const FavoritesScreen = (props) => {
@@ -45,7 +45,8 @@ const FavoritesScreen = (props) => {
                     </a>
                   </div>
                 </div>
-                <FavoritesList
+                <OfferList
+                  isFavorites={true}
                   onOfferCardClick={onOfferCardClick}
                   offers={offers}
                 />
@@ -59,7 +60,9 @@ const FavoritesScreen = (props) => {
                     </a>
                   </div>
                 </div>
-                <FavoritesList
+                <OfferList
+                  isFavorites={true}
+                  onOfferCardClick={onOfferCardClick}
                   offers={offers}
                 />
               </li>

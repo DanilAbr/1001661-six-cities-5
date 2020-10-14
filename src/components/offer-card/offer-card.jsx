@@ -68,9 +68,9 @@ class OfferCard extends PureComponent {
 }
 
 OfferCard.propTypes = {
-  onOfferCardClick: PropTypes.func,
-  onHover: PropTypes.func,
   offer: offerProp,
+  onOfferCardClick: PropTypes.func.isRequired,
+  onHover: PropTypes.func.isRequired,
   isFavorites: PropTypes.bool,
 };
 

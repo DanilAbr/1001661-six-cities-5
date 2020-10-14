@@ -1,5 +1,4 @@
-import React, {PureComponent} from 'react';
-const array = [5, 4, 3, 2, 1];
+import React, {PureComponent, Fragment} from 'react';
 
 
 class NewReview extends PureComponent {
@@ -44,18 +43,22 @@ class NewReview extends PureComponent {
           className="reviews__rating-form form__rating"
           onChange={this.handleRatingCheck}
         >
-
-          {array.map((item, index) => (
-            <div key={index}>
-              <input className="form__rating-input visually-hidden" name="rating" value={item} id={`${item}-stars`} type="radio"/>
+          {[5, 4, 3, 2, 1].map((item, index) => (
+            <Fragment key={index}>
+              <input
+                className="form__rating-input visually-hidden"
+                name="rating"
+                value={item}
+                id={`${item}-stars`}
+                type="radio"
+              />
               <label htmlFor={`${item}-stars`} className="reviews__rating-label form__rating-label" title="perfect">
                 <svg className="form__star-image" width="37" height="33">
                   <use xlinkHref="#icon-star"/>
                 </svg>
               </label>
-            </div>
+            </Fragment>
           ))}
-
         </div>
         <textarea
           onChange={this.handleTextChange}
