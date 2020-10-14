@@ -11,7 +11,6 @@ import reviewsProp from '../offer-screen/reviews.prop';
 
 const App = (props) => {
   const {placesCount, offers, reviews} = props;
-  const offer = offers[0];
 
   return (
     <BrowserRouter>
@@ -19,38 +18,47 @@ const App = (props) => {
         <Route exact path="/"
           render={({history}) => (
             <MainPage
-              onOfferCardClick={(evt) => {
-                evt.preventDefault();
-                history.push(`/offer`);
-              }}
+              onOfferCardClick={(offer) =>
+                history.push(`/offer/${offer.id}`)
+              }
               offers={offers}
               placesCount={placesCount}
             />
           )}
         />
         <Route exact path="/login"
-          render={() => (
-            <LoginScreen />
+          render={({history}) => (
+            <LoginScreen
+              onLogoClick={() => {
+                history.push(`/`);
+              }}
+            />
           )}
         />
         <Route exact path="/favorites"
           render={({history}) => (
             <FavoritesScreen
-              onOfferCardClick={(evt) => {
-                evt.preventDefault();
-                history.push(`/offer`);
+              onOfferCardClick={(offer) =>
+                history.push(`/offer/${offer.id}`)
+              }
+              onLogoClick={() => {
+                history.push(`/`);
               }}
               offers={offers}
             />
           )}
         />
         <Route exact path="/offer/:id?"
-          render={() => (
-            <OfferScreen
+          render={({match, history}) => {
+            const offer = offers.find((item) => item.id === match.params.id);
+            return <OfferScreen
+              onLogoClick={() => {
+                history.push(`/`);
+              }}
               reviews={reviews}
               offer={offer}
-            />
-          )}
+            />;
+          }}
         />
       </Switch>
     </BrowserRouter>

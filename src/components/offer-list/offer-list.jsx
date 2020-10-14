@@ -17,15 +17,20 @@ class OfferList extends PureComponent {
     this.setState({activeOffer: id});
   }
 
+  _handleOfferClick(evt, offer) {
+    evt.preventDefault();
+    this.props.onOfferCardClick(offer);
+  }
+
   render() {
-    const {offers, onOfferCardClick, isFavorites} = this.props;
+    const {offers, isFavorites} = this.props;
 
     return (
       <div className={isFavorites ? `favorites__places` : `cities__places-list places__list tabs__content`}>
         {offers.map((offer) =>
           <OfferCard
             key={offer.id}
-            onOfferCardClick={onOfferCardClick}
+            onOfferCardClick={(evt) => this._handleOfferClick(evt, offer)}
             onHover={this._handleOfferHover}
             isFavorites={isFavorites}
             offer={offer}

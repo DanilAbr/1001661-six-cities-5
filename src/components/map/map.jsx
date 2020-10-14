@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import leaflet from 'leaflet';
 import offersProp from '../offer-list/offers.prop';
+import "leaflet/dist/leaflet.css";
 
 
 class Map extends PureComponent {
@@ -41,7 +42,7 @@ class Map extends PureComponent {
 
   render() {
     return (
-      <div id="map" />
+      <div id="map" style={{width: `100%`, height: `100%`}}/>
     );
   }
 }
