@@ -4,7 +4,7 @@ import NewReview from '../new-review/new-review';
 import offerProp from '../offer-card/offer.prop';
 import reviewsProp from '../review/review.prop';
 import Header from '../header/header';
-import Review from '../review/review';
+import ReviewList from "../review-list/review-list";
 
 
 const OfferScreen = (props) => {
@@ -98,11 +98,7 @@ const OfferScreen = (props) => {
               </div>
               <section className="property__reviews reviews">
                 <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
-                <ul className="reviews__list">
-                  {reviews.map((review) =>
-                    <Review key={review.id} review={review} />
-                  )}
-                </ul>
+                <ReviewList reviews={reviews} />
                 <NewReview />
               </section>
             </div>
