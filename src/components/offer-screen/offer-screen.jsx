@@ -133,6 +133,7 @@ OfferScreen.propTypes = {
   offer: offerProp,
   reviews: PropTypes.arrayOf(reviewsProp).isRequired,
   onLogoClick: PropTypes.func.isRequired,
+  onOfferCardClick: PropTypes.func.isRequired,
 };
 
 
