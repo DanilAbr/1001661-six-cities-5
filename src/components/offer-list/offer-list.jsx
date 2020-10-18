@@ -23,17 +23,33 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    const {offers, isFavorites} = this.props;
+    const {
+      offers,
+      isFavorites,
+      isDetail,
+      isMain
+    } = this.props;
 
     return (
-      <div className={isFavorites ? `favorites__places` : `cities__places-list places__list tabs__content`}>
+      <div
+        className={
+          isFavorites
+            ? `favorites__places`
+            : `${isDetail
+              ? `near-places__list`
+              : `cities__places-list tabs__content`}
+            places__list`
+        }
+      >
         {offers.map((offer) =>
           <OfferCard
             key={offer.id}
             onOfferCardClick={(evt) => this._handleOfferClick(evt, offer)}
             onHover={this._handleOfferHover}
-            isFavorites={isFavorites}
             offer={offer}
+            isFavorites={isFavorites}
+            isMain={isMain}
+            isDetail={isDetail}
           />
         )}
       </div>
@@ -46,6 +62,8 @@ OfferList.propTypes = {
   offers: offersProp,
   onOfferCardClick: PropTypes.func.isRequired,
   isFavorites: PropTypes.bool,
+  isDetail: PropTypes.bool,
+  isMain: PropTypes.bool,
 };
 
 

@@ -78,6 +78,7 @@ const MainPage = (props) => {
                 </select> */}
               </form>
               <OfferList
+                isMain={true}
                 onOfferCardClick={onOfferCardClick}
                 offers={offers}
               />

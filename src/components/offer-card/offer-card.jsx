@@ -9,7 +9,21 @@ class OfferCard extends PureComponent {
   }
 
   render() {
-    const {offer, onHover, onOfferCardClick, isFavorites} = this.props;
+    const {
+      offer,
+      onHover,
+      onOfferCardClick,
+      isFavorites,
+      isDetail,
+      isMain
+    } = this.props;
+
+    const currentClass =
+      isFavorites
+        ? `favorites`
+        : `${isDetail
+          ? `near-places`
+          : `cities`}`;
 
     return (
       <article
@@ -17,14 +31,19 @@ class OfferCard extends PureComponent {
           onHover(offer.id);
         }}
         onClick={onOfferCardClick}
-        className={`${isFavorites ? `favorites__card` : `cities__place-card`} place-card`}
+        className={`${
+          !isMain
+            ? `${currentClass}__card`
+            : `cities__place-card`}
+          place-card`
+        }
       >
         {!isFavorites && offer.isPremium &&
           <div className="place-card__mark">
             <span>Premium</span>
           </div>
         }
-        <div className={`${isFavorites ? `favorites__image-wrapper` : `cities__image-wrapper`} place-card__image-wrapper`}>
+        <div className={`${currentClass}__image-wrapper place-card__image-wrapper`}>
           <a href="#">
             <img
               className="place-card__image"
@@ -72,6 +91,8 @@ OfferCard.propTypes = {
   onOfferCardClick: PropTypes.func.isRequired,
   onHover: PropTypes.func.isRequired,
   isFavorites: PropTypes.bool,
+  isDetail: PropTypes.bool,
+  isMain: PropTypes.bool,
 };
 
 

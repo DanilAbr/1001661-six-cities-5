@@ -55,6 +55,9 @@ const App = (props) => {
               onLogoClick={() => {
                 history.push(`/`);
               }}
+              onOfferCardClick={(currentOffer) =>
+                history.push(`/offer/${currentOffer.id}`)
+              }
               reviews={reviews}
               offer={offer}
             />;
