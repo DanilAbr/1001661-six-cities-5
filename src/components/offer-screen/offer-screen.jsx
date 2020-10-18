@@ -4,11 +4,14 @@ import NewReview from '../new-review/new-review';
 import offerProp from '../offer-card/offer.prop';
 import reviewsProp from '../review/review.prop';
 import Header from '../header/header';
-import ReviewList from "../review-list/review-list";
+import ReviewList from '../review-list/review-list';
+import Map from '../map/map';
+import offers from '../../mocks/offers';
 
 
 const OfferScreen = (props) => {
   const {offer, reviews, onLogoClick} = props;
+  const nearOffers = offers.slice(0, 3);
 
   return (
     <div className="page">
@@ -103,7 +106,11 @@ const OfferScreen = (props) => {
               </section>
             </div>
           </div>
-          <section className="property__map map"/>
+          <section className="property__map map">
+            <Map
+              offers={nearOffers}
+            />
+          </section>
         </section>
         <div className="container">
           <section className="near-places places">
