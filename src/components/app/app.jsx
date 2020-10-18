@@ -6,7 +6,7 @@ import FavoritesScreen from '../favorites-screen/favorites-screen';
 import OfferScreen from '../offer-screen/offer-screen';
 import PropTypes from 'prop-types';
 import offersProp from '../offer-list/offers.prop';
-import reviewsProp from '../offer-screen/reviews.prop';
+import reviewsProp from '../review/review.prop';
 
 
 const App = (props) => {
@@ -69,7 +69,7 @@ const App = (props) => {
 App.propTypes = {
   placesCount: PropTypes.number.isRequired,
   offers: offersProp,
-  reviews: reviewsProp,
+  reviews: PropTypes.arrayOf(reviewsProp).isRequired,
 };
 
 
