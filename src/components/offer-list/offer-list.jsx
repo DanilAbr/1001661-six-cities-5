@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import offersProp from '../offer-list/offers.prop';
 import OfferCard from '../offer-card/offer-card';
+import {offerClasses} from "../../utils/const";
 
 
 class OfferList extends PureComponent {
@@ -23,33 +24,19 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    const {
-      offers,
-      isFavorites,
-      isDetail,
-      isMain
-    } = this.props;
+    const {offers, isFavorites, isDetail} = this.props;
+
+    const type = isFavorites ? `isFavorites` : `${isDetail ? `isDetail` : `isMain`}`;
 
     return (
-      <div
-        className={
-          isFavorites
-            ? `favorites__places`
-            : `${isDetail
-              ? `near-places__list`
-              : `cities__places-list tabs__content`}
-            places__list`
-        }
-      >
+      <div className={offerClasses[type].listWrap}>
         {offers.map((offer) =>
           <OfferCard
             key={offer.id}
             onOfferCardClick={(evt) => this._handleOfferClick(evt, offer)}
             onHover={this._handleOfferHover}
             offer={offer}
-            isFavorites={isFavorites}
-            isMain={isMain}
-            isDetail={isDetail}
+            type={type}
           />
         )}
       </div>

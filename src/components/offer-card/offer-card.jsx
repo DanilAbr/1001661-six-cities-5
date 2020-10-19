@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import offerProp from './offer.prop';
+import {offerClasses} from "../../utils/const";
 
 
 class OfferCard extends PureComponent {
@@ -9,41 +10,23 @@ class OfferCard extends PureComponent {
   }
 
   render() {
-    const {
-      offer,
-      onHover,
-      onOfferCardClick,
-      isFavorites,
-      isDetail,
-      isMain
-    } = this.props;
-
-    const currentClass =
-      isFavorites
-        ? `favorites`
-        : `${isDetail
-          ? `near-places`
-          : `cities`}`;
+    const {offer, onHover, onOfferCardClick, type} = this.props;
+    const isFavorites = type === `isFavorites`;
 
     return (
       <article
+        className={offerClasses[type].article}
         onMouseEnter={() => {
           onHover(offer.id);
         }}
         onClick={onOfferCardClick}
-        className={`${
-          !isMain
-            ? `${currentClass}__card`
-            : `cities__place-card`}
-          place-card`
-        }
       >
         {!isFavorites && offer.isPremium &&
           <div className="place-card__mark">
             <span>Premium</span>
           </div>
         }
-        <div className={`${currentClass}__image-wrapper place-card__image-wrapper`}>
+        <div className={offerClasses[type].imageWrap}>
           <a href="#">
             <img
               className="place-card__image"
@@ -54,14 +37,14 @@ class OfferCard extends PureComponent {
             />
           </a>
         </div>
-        <div className={`${isFavorites ? `favorites-card__info` : ``} place-card__info`}>
+        <div className={offerClasses[type].infoWrap}>
           <div className="place-card__price-wrapper">
             <div className="place-card__price">
               <b className="place-card__price-value">&euro;{offer.price}</b>
               <span className="place-card__price-text">&#47;&nbsp;night</span>
             </div>
             <button
-              className={`place-card__bookmark-button${isFavorites ? `--active` : ``} button`}
+              className={offerClasses[type].button}
               type="button"
             >
               <svg className="place-card__bookmark-icon" width="18" height="19">
@@ -90,9 +73,7 @@ OfferCard.propTypes = {
   offer: offerProp,
   onOfferCardClick: PropTypes.func.isRequired,
   onHover: PropTypes.func.isRequired,
-  isFavorites: PropTypes.bool,
-  isDetail: PropTypes.bool,
-  isMain: PropTypes.bool,
+  type: PropTypes.string.isRequired,
 };
 
 
