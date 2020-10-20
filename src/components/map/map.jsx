@@ -43,12 +43,15 @@ class Map extends PureComponent {
   }
 
   render() {
+    const {className} = this.props;
 
     return (
-      <div
-        ref={this.mapRef}
-        style={{width: `100%`, height: `100%`}}
-      />
+      <section className={`${className}__map map`}>
+        <div
+          ref={this.mapRef}
+          style={{width: `100%`, height: `100%`}}
+        />
+      </section>
     );
   }
 }

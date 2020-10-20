@@ -107,11 +107,10 @@ const OfferScreen = (props) => {
               </section>
             </div>
           </div>
-          <section className="property__map map">
-            <Map
-              offers={nearOffers}
-            />
-          </section>
+          <Map
+            className={`property`}
+            offers={nearOffers}
+          />
         </section>
         <div className="container">
           <section className="near-places places">
