@@ -8,7 +8,7 @@ const REVIEWS_TEXT = `A quiet cozy and picturesque that hides behind a a river b
 const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
 
 const IMAGES_COUNT = 6;
-const OFFERS_COUNT = 4;
+const OFFERS_COUNT = 40;
 const MAX_BEDROOMS_COUNT = 3;
 const MAX_ADULTS_COUNT = 4;
 const MAX_PRICE = 100;
