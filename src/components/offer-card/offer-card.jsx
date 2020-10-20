@@ -16,9 +16,7 @@ class OfferCard extends PureComponent {
     return (
       <article
         className={offerClasses[type].article}
-        onMouseEnter={() => {
-          onHover(offer.id);
-        }}
+        onMouseEnter={() => onHover(offer.id)}
         onClick={onOfferCardClick}
       >
         {!isFavorites && offer.isPremium &&
@@ -68,6 +66,7 @@ class OfferCard extends PureComponent {
     );
   }
 }
+
 
 OfferCard.propTypes = {
   offer: offerProp,

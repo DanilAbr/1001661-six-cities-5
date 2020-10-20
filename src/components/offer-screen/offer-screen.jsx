@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import NewReview from '../new-review/new-review';
-import offerProp from '../offer-card/offer.prop';
-import reviewsProp from '../review/review.prop';
 import Header from '../header/header';
 import ReviewList from '../review-list/review-list';
 import Map from '../map/map';
-import offers from '../../mocks/offers';
 import OfferList from "../offer-list/offer-list";
+import offerProp from '../offer-card/offer.prop';
+import reviewsProp from '../review/review.prop';
+import offers from '../../mocks/offers';
 
 
 const OfferScreen = (props) => {

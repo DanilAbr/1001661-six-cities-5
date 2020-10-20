@@ -2,15 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
+
 import App from './components/app/app';
 import offers from './mocks/offers';
 import reviews from './mocks/reviews';
 import {reducer} from './store/reducer';
 
-
-const Setting = {
-  PLACES_COUNT: 312
-};
 
 const store = createStore(
     reducer,
@@ -23,7 +20,6 @@ ReactDOM.render(
       <App
         offers={offers}
         reviews={reviews}
-        placesCount={Setting.PLACES_COUNT}
       />
     </Provider>,
     document.querySelector(`#root`)

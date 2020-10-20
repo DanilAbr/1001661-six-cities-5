@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const Header = (props) => {
-  const {onLogoClick} = props;
-
+const Header = ({onLogoClick}) => {
   return (
     <header className="header">
       <div className="container">

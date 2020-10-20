@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OfferList from '../offer-list/offer-list';
-import offersProp from '../offer-list/offers.prop';
+import {connect} from 'react-redux';
+
 import Map from '../../components/map/map';
 import Header from '../../components/header/header';
 import CitiesList from '../cities-list/cities-list';
+import {ActionCreator} from '../../store/action';
+import OfferList from '../offer-list/offer-list';
+import offersProp from '../offer-list/offers.prop';
 
 
 const MainPage = (props) => {
-  const {placesCount, offers, onOfferCardClick} = props;
+  const {offers, onOfferCardClick, cities, currentCity, onCityClick} = props;
+  const currentOffers = offers.filter((offer) => offer.city === currentCity);
 
   return (
     <div className="page page--gray page--main">
@@ -18,14 +22,20 @@ const MainPage = (props) => {
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <CitiesList />
+            <CitiesList
+              onCityClick={onCityClick}
+              currentCity={currentCity}
+              cities={cities}
+            />
           </section>
         </div>
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{placesCount} places to stay in Amsterdam</b>
+              <b className="places__found">
+                {currentOffers.length} places to stay in {currentCity}
+              </b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -49,12 +59,12 @@ const MainPage = (props) => {
               </form>
               <OfferList
                 onOfferCardClick={onOfferCardClick}
-                offers={offers}
+                offers={currentOffers}
               />
             </section>
             <div className="cities__right-section">
               <Map
-                offers={offers}
+                offers={currentOffers}
                 className={`cities`}
               />
             </div>
@@ -68,9 +78,23 @@ const MainPage = (props) => {
 
 MainPage.propTypes = {
   offers: offersProp,
-  placesCount: PropTypes.number.isRequired,
   onOfferCardClick: PropTypes.func.isRequired,
+  cities: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  currentCity: PropTypes.string.isRequired,
+  onCityClick: PropTypes.func.isRequired,
 };
 
 
-export default MainPage;
+const mapStateToProps = (state) => ({
+  offers: state.offers,
+  cities: state.citiesList,
+  currentCity: state.currentCity,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onCityClick: (city) => dispatch(ActionCreator.changeCity(city)),
+});
+
+
+export {MainPage};
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

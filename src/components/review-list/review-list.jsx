@@ -4,9 +4,7 @@ import reviewProp from '../review/review.prop';
 import PropTypes from 'prop-types';
 
 
-const ReviewList = (props) => {
-  const {reviews} = props;
-
+const ReviewList = ({reviews}) => {
   return (
     <ul className="reviews__list">
       {reviews.map((review) =>

@@ -1,16 +1,21 @@
 import React from 'react';
-import {CITIES} from '../../utils/const';
+import PropTypes from 'prop-types';
 
-const CitiesList = () => {
+
+const CitiesList = ({cities, currentCity, onCityClick}) => {
   return (
     <ul className="locations__list tabs__list">
-      {CITIES.map((city, index) => (
+      {cities.map((city, index) => (
         <li
           className="locations__item"
           key={`city-${index}`}
         >
           <a
-            className={`locations__item-link tabs__item${index === 0 ? `--active` : ``}`}
+            onClick={(evt) => {
+              evt.preventDefault();
+              onCityClick(city);
+            }}
+            className={`locations__item-link tabs__item ${city === currentCity ? `tabs__item--active` : ``}`}
             href="#"
           >
             <span>{city}</span>
@@ -19,6 +24,13 @@ const CitiesList = () => {
       ))}
     </ul>
   );
+};
+
+
+CitiesList.propTypes = {
+  cities: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  onCityClick: PropTypes.func,
+  currentCity: PropTypes.string.isRequired,
 };
 
 

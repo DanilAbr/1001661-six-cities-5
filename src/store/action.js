@@ -4,8 +4,9 @@ const ActionType = {
 };
 
 const ActionCreator = {
-  getOfferList: () => ({
-    type: ActionType.GET_OFFER_LIST,
+  changeCity: (city) => ({
+    type: ActionType.CHANGE_CITY,
+    city,
   }),
 };
 

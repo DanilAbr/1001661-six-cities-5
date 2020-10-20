@@ -2,9 +2,7 @@ import React from 'react';
 import reviewProp from './review.prop';
 
 
-const Review = (props) => {
-  const {review} = props;
-
+const Review = ({review}) => {
   return (
     <li className="reviews__item">
       <div className="reviews__user user">

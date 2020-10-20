@@ -1,8 +1,9 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import offersProp from '../offer-list/offers.prop';
+
 import OfferCard from '../offer-card/offer-card';
-import {offerClasses} from "../../utils/const";
+import offersProp from '../offer-list/offers.prop';
+import {offerClasses} from '../../utils/const';
 
 
 class OfferList extends PureComponent {

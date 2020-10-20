@@ -9,24 +9,24 @@ class NewReview extends PureComponent {
       ratingValue: ``
     };
 
-    this.handleTextChange = this.handleTextChange.bind(this);
-    this.handleRatingCheck = this.handleRatingCheck.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this._handleTextChange = this._handleTextChange.bind(this);
+    this._handleRatingCheck = this._handleRatingCheck.bind(this);
+    this._handleSubmit = this._handleSubmit.bind(this);
   }
 
-  handleTextChange(evt) {
+  _handleTextChange(evt) {
     this.setState({
       textValue: evt.target.value
     });
   }
 
-  handleRatingCheck(evt) {
+  _handleRatingCheck(evt) {
     this.setState({
       ratingValue: evt.target.value
     });
   }
 
-  handleSubmit(evt) {
+  _handleSubmit(evt) {
     evt.preventDefault();
   }
 
@@ -36,12 +36,12 @@ class NewReview extends PureComponent {
         className="reviews__form form"
         action="#"
         method="post"
-        onSubmit={this.handleSubmit}
+        onSubmit={this._handleSubmit}
       >
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
         <div
           className="reviews__rating-form form__rating"
-          onChange={this.handleRatingCheck}
+          onChange={this._handleRatingCheck}
         >
           {[5, 4, 3, 2, 1].map((item, index) => (
             <Fragment key={index}>
@@ -61,7 +61,7 @@ class NewReview extends PureComponent {
           ))}
         </div>
         <textarea
-          onChange={this.handleTextChange}
+          onChange={this._handleTextChange}
           className="reviews__textarea form__textarea"
           id="review" name="review"
           placeholder="Tell how was your stay, what you like and what can be improved"

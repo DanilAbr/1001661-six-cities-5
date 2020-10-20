@@ -1,14 +1,26 @@
-import {CITIES} from '../utils/const';
 import offers from '../mocks/offers';
+import {ActionType} from './action';
+import {extend} from '../utils/utils';
 
+
+const citiesList = Array.from(
+    new Set([...offers.map((offer) => offer.city)])
+);
 
 const initialState = {
-  city: CITIES[0],
   offers,
+  currentCity: citiesList[0],
+  citiesList,
 };
 
 const reducer = (state = initialState, action) => {
-  return state;
+  switch (action.type) {
+    case ActionType.CHANGE_CITY:
+      return extend(state, {
+        currentCity: action.city
+      });
+    default: return state;
+  }
 };
 
 

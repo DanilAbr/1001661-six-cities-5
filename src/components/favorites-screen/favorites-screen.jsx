@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import offersProp from '../offer-list/offers.prop';
+
 import OfferList from '../offer-list/offer-list';
 import Header from '../header/header';
+import offersProp from '../offer-list/offers.prop';
 
 
-const FavoritesScreen = (props) => {
-  const {offers, onOfferCardClick, onLogoClick} = props;
-
+const FavoritesScreen = ({offers, onOfferCardClick, onLogoClick}) => {
   return (
     <div className="page">
       <Header

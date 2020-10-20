@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import Header from '../header/header';
 
 
-const LoginScreen = (props) => {
-  const {onLogoClick} = props;
-
+const LoginScreen = ({onLogoClick}) => {
   return (
     <div className="page page--gray page--login">
       <Header

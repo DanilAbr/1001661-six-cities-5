@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import leaflet from 'leaflet';
 import offersProp from '../offer-list/offers.prop';
 import 'leaflet/dist/leaflet.css';
@@ -9,37 +10,50 @@ class Map extends PureComponent {
     super(props);
 
     this.mapRef = React.createRef();
+    this.map = null;
+    this.zoom = 11;
+    this.city = [52.38333, 4.9];
+    this.markers = [];
   }
 
   componentDidMount() {
+    this.map = leaflet.map(this.mapRef.current, {
+      center: this.city,
+      zoom: this.zoom,
+      zoomControl: false,
+      marker: true
+    });
+    this.map.setView(this.city, this.zoom);
+
+    leaflet
+      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
+        attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
+      })
+      .addTo(this.map);
+
+    this._renderMarkers();
+  }
+
+  _renderMarkers() {
     const {offers} = this.props;
-    const city = [52.38333, 4.9];
 
     const icon = leaflet.icon({
       iconUrl: `img/pin.svg`,
       iconSize: [30, 30]
     });
 
-    const zoom = 12;
-    const map = leaflet.map(this.mapRef.current, {
-      center: city,
-      zoom,
-      zoomControl: false,
-      marker: true
-    });
-    map.setView(city, zoom);
-
-    leaflet
-      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-        attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
-      })
-      .addTo(map);
-
     offers.map((offer) => {
-      leaflet
-        .marker(offer.coords, {icon})
-        .addTo(map);
+      this.markers.push(
+          leaflet
+            .marker(offer.coords, {icon})
+            .addTo(this.map)
+      );
     });
+  }
+
+  componentDidUpdate() {
+    this.markers.map((marker) => this.map.removeLayer(marker));
+    this._renderMarkers();
   }
 
   render() {
@@ -49,7 +63,7 @@ class Map extends PureComponent {
       <section className={`${className}__map map`}>
         <div
           ref={this.mapRef}
-          style={{width: `100%`, height: `100%`}}
+          style={{height: `100%`}}
         />
       </section>
     );
@@ -59,6 +73,7 @@ class Map extends PureComponent {
 
 Map.propTypes = {
   offers: offersProp,
+  className: PropTypes.string.isRequired,
 };
 
 
