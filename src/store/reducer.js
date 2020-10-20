@@ -1,5 +1,5 @@
-import {CITIES} from '../../utils/const';
-import offers from '../../mocks/offers';
+import {CITIES} from '../utils/const';
+import offers from '../mocks/offers';
 
 
 const initialState = {
