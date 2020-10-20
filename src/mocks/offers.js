@@ -13,6 +13,7 @@ import {
   TITLES,
   TYPES,
   COORDS,
+  CITIES,
 } from '../utils/const';
 import {getRandomArray, getRandomBoolean, getRandomItemOfArray, getRandomNumber} from '../utils/utils';
 
@@ -21,11 +22,12 @@ const getRandomSrc = () => `http://picsum.photos/260/200?r=${Math.random()}`;
 const getRandomPrice = () => getRandomNumber(MAX_PRICE);
 const getRandomType = () => getRandomItemOfArray(TYPES);
 const getRandomTitle = () => getRandomItemOfArray(TITLES);
-const getImages = () => getRandomArray(new Array(IMAGES_COUNT).fill(``).map(getRandomSrc));
+const getImages = () => getRandomArray(Array.from({length: IMAGES_COUNT}, getRandomSrc));
 
 
 function generateOffer() {
   return {
+    city: getRandomItemOfArray(CITIES),
     images: getImages(),
     title: getRandomTitle(),
     description: DESCRIPTION,

@@ -5,6 +5,7 @@ const INSIDE_ITEMS = [`Wi-Fi`, `Washing machine`, `Towels`, `Heating`, `Coffee m
 const AVATAR_URL = `https://api.adorable.io/avatars/128`;
 const NAMES = [`Alexandra`, `Ivan`, `Danila`, `Anna`, `Igor`];
 const REVIEWS_TEXT = `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`;
+const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
 
 const IMAGES_COUNT = 6;
 const OFFERS_COUNT = 4;
@@ -61,5 +62,6 @@ export {
   REVIEWS_TEXT,
   REVIEWS_COUNT,
   COORDS,
+  CITIES,
   offerClasses
 };
