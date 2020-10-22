@@ -1,8 +1,8 @@
 const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
-  GET_OFFERS: `GET_OFFERS`,
+  GET_FILTERED_OFFERS: `GET_FILTERED_OFFERS`,
   CHANGE_SORT: `CHANGE_SORT`,
-  SORT_OFFERS: `SORT_OFFERS`,
+  GET_SORTED_OFFERS: `GET_SORTED_OFFERS`,
 };
 
 const ActionCreator = {
@@ -11,7 +11,7 @@ const ActionCreator = {
     city,
   }),
   getOffers: (city) => ({
-    type: ActionType.GET_OFFERS,
+    type: ActionType.GET_FILTERED_OFFERS,
     city,
   }),
   changeSort: (sortType) => ({
@@ -19,9 +19,9 @@ const ActionCreator = {
     sortType
   }),
   sortOffers: (sortType) => ({
-    type: ActionType.SORT_OFFERS,
+    type: ActionType.GET_SORTED_OFFERS,
     sortType,
-  })
+  }),
 };
 
 

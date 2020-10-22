@@ -4,26 +4,23 @@ const getRandomNumber = (maxNumber) => Math.ceil(Math.random() * maxNumber);
 const getRandomArray = (array) => array.filter(() => getRandomBoolean());
 const extend = (a, b) => Object.assign({}, a, b);
 
-const sortOffer = (offers, sortType) => {
-  const sortOffers = offers.slice();
 
+const sortOffer = (offers, sortType) => {
   switch (sortType) {
     case (`low`):
-      return sortOffers.sort((a, b) => a.price - b.price);
+      return offers.slice().sort((a, b) => a.price - b.price);
     case (`high`):
-      return sortOffers.sort((a, b) => b.price - a.price);
+      return offers.slice().sort((a, b) => b.price - a.price);
     case (`rated`):
-      return sortOffers.sort((a, b) => b.rating - a.rating);
-    case (`popular`):
-      return sortOffers;
+      return offers.slice().sort((a, b) => b.rating - a.rating);
+    default:
+      return offers;
   }
-
-  return sortOffers;
 };
 
-const getFilteredOffers = (offersArray, currentCity) => {
-  return offersArray.filter((offer) => offer.city === currentCity);
-};
+
+const getFilteredOffers = (offersArray, currentCity) =>
+  offersArray.filter((offer) => offer.city === currentCity);
 
 
 export {
