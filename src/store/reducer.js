@@ -14,6 +14,7 @@ const initialState = {
   currentOffers,
   citiesList,
   sortType: `popular`,
+  currentCard: {},
 };
 
 
@@ -43,6 +44,11 @@ const reducer = (state = initialState, action) => {
 
       return extend(state, {
         currentOffers: sortOffer(state.currentOffers, action.sortType)
+      });
+
+    case ActionType.SELECT_CARD:
+      return extend(state, {
+        currentCard: offers.filter((offer) => offer.id === action.offerId)[0]
       });
 
     default: return state;

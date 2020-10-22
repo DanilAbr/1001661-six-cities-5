@@ -12,7 +12,6 @@ import {
   OFFERS_COUNT,
   TITLES,
   TYPES,
-  COORDS,
   CITIES,
 } from '../utils/const';
 import {getRandomArray, getRandomBoolean, getRandomItemOfArray, getRandomNumber} from '../utils/utils';
@@ -38,7 +37,7 @@ function generateOffer() {
     maxAdults: getRandomNumber(MAX_ADULTS_COUNT),
     insideItems: getRandomArray(INSIDE_ITEMS),
     price: getRandomPrice(),
-    coords: getRandomItemOfArray(COORDS),
+    coords: [52.35 + Math.random() * 0.05, 4.88 + Math.random() * 0.05],
     owner: {
       avatar: `${AVATAR_URL}/${Math.ceil(Math.random() * 3)}`,
       name: getRandomItemOfArray(NAMES),

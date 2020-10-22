@@ -3,6 +3,7 @@ const ActionType = {
   GET_FILTERED_OFFERS: `GET_FILTERED_OFFERS`,
   CHANGE_SORT: `CHANGE_SORT`,
   GET_SORTED_OFFERS: `GET_SORTED_OFFERS`,
+  SELECT_CARD: `SELECT_CARD`,
 };
 
 const ActionCreator = {
@@ -22,6 +23,10 @@ const ActionCreator = {
     type: ActionType.GET_SORTED_OFFERS,
     sortType,
   }),
+  selectCard: (offerId) => ({
+    type: ActionType.SELECT_CARD,
+    offerId,
+  })
 };
 
 

@@ -90,6 +90,7 @@ const mapStateToProps = (state) => ({
   sortType: state.sortType
 });
 
+
 const mapDispatchToProps = (dispatch) => ({
   onSortClick: (sortType) => {
     dispatch(ActionCreator.changeSort(sortType));

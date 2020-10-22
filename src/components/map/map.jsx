@@ -1,8 +1,10 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import 'leaflet/dist/leaflet.css';
 import leaflet from 'leaflet';
 import offersProp from '../offer-list/offers.prop';
-import 'leaflet/dist/leaflet.css';
+import offerProp from '../offer-card/offer.prop';
 
 
 class Map extends PureComponent {
@@ -11,7 +13,7 @@ class Map extends PureComponent {
 
     this.mapRef = React.createRef();
     this.map = null;
-    this.zoom = 11;
+    this.zoom = 12;
     this.city = [52.38333, 4.9];
     this.markers = [];
   }
@@ -35,14 +37,14 @@ class Map extends PureComponent {
   }
 
   _renderMarkers() {
-    const {offers} = this.props;
-
-    const icon = leaflet.icon({
-      iconUrl: `img/pin.svg`,
-      iconSize: [30, 30]
-    });
+    const {offers, currentCard} = this.props;
 
     offers.map((offer) => {
+      const icon = leaflet.icon({
+        iconUrl: `img/pin${offer.id === currentCard.id ? `-active` : ``}.svg`,
+        iconSize: [30, 30]
+      });
+
       this.markers.push(
           leaflet
             .marker(offer.coords, {icon})
@@ -74,7 +76,14 @@ class Map extends PureComponent {
 Map.propTypes = {
   offers: offersProp,
   className: PropTypes.string.isRequired,
+  currentCard: PropTypes.oneOfType([PropTypes.object, offerProp]).isRequired,
 };
 
 
-export default Map;
+const mapStateToProps = (state) => ({
+  currentCard: state.currentCard,
+});
+
+
+export {Map};
+export default connect(mapStateToProps)(Map);

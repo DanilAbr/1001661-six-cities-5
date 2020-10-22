@@ -2,6 +2,8 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import offerProp from './offer.prop';
 import {offerClasses} from "../../utils/const";
+import {ActionCreator} from '../../store/action';
+import {connect} from 'react-redux';
 
 
 class OfferCard extends PureComponent {
@@ -10,13 +12,13 @@ class OfferCard extends PureComponent {
   }
 
   render() {
-    const {offer, onHover, onOfferCardClick, type} = this.props;
+    const {offer, onOfferCardClick, type, onCardHover} = this.props;
     const isFavorites = type === `isFavorites`;
 
     return (
       <article
         className={offerClasses[type].article}
-        onMouseEnter={() => onHover(offer.id)}
+        onMouseEnter={() => onCardHover(offer.id)}
         onClick={onOfferCardClick}
       >
         {!isFavorites && offer.isPremium &&
@@ -71,9 +73,16 @@ class OfferCard extends PureComponent {
 OfferCard.propTypes = {
   offer: offerProp,
   onOfferCardClick: PropTypes.func.isRequired,
-  onHover: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
+  onCardHover: PropTypes.func.isRequired,
 };
 
 
-export default OfferCard;
+const mapDispatchToProps = (dispatch) => ({
+  onCardHover: (cardId) => {
+    dispatch(ActionCreator.selectCard(cardId));
+  }});
+
+
+export {OfferCard};
+export default connect(null, mapDispatchToProps)(OfferCard);
