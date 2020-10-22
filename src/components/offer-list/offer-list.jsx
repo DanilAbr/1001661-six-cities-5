@@ -27,6 +27,24 @@ class OfferList extends PureComponent {
   render() {
     const {offers, type} = this.props;
 
+    // const defaultOffers = offers;
+    // let sortOffers = offers;
+    //
+    // switch (sortType) {
+    //   case (`low`):
+    //     console.log(sortType);
+    //     console.log(`defaultOffers`, defaultOffers);
+    //     sortOffers.sort((a, b) => a.price - b.price);
+    //     break;
+    //   case (`high`):
+    //     console.log(sortType);
+    //     sortOffers.sort((a, b) => b.price - a.price);
+    //     break;
+    //   default:
+    //     console.log(sortType);
+    //     sortOffers = defaultOffers;
+    // }
+
     return (
       <div className={offerClasses[type].listWrap}>
         {offers.map((offer) =>

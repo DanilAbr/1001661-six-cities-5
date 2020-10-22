@@ -13,7 +13,7 @@ import offersProp from '../offer-list/offers.prop';
 
 
 const MainPage = (props) => {
-  const {offers, onOfferCardClick, cities, currentCity, onCityClick} = props;
+  const {offers, onOfferCardClick, cities, currentCity, onCityClick, sortType} = props;
 
   return (
     <div className="page page--gray page--main">
@@ -39,6 +39,7 @@ const MainPage = (props) => {
               </b>
               <Sort />
               <OfferList
+                sortType={sortType}
                 type={OfferTypes.MAIN}
                 onOfferCardClick={onOfferCardClick}
                 offers={offers}
@@ -64,10 +65,12 @@ MainPage.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   currentCity: PropTypes.string.isRequired,
   onCityClick: PropTypes.func.isRequired,
+  sortType: PropTypes.string.isRequired,
 };
 
 
 const mapStateToProps = (state) => ({
+  sortType: state.sortType,
   offers: state.currentOffers,
   cities: state.citiesList,
   currentCity: state.currentCity,
