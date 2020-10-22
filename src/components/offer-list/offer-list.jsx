@@ -1,9 +1,9 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
+import {offerClasses} from '../../utils/const';
 import OfferCard from '../offer-card/offer-card';
 import offersProp from '../offer-list/offers.prop';
-import {offerClasses} from '../../utils/const';
 
 
 class OfferList extends PureComponent {
@@ -25,9 +25,7 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    const {offers, isFavorites, isDetail} = this.props;
-
-    const type = isFavorites ? `isFavorites` : `${isDetail ? `isDetail` : `isMain`}`;
+    const {offers, type} = this.props;
 
     return (
       <div className={offerClasses[type].listWrap}>
@@ -49,9 +47,7 @@ class OfferList extends PureComponent {
 OfferList.propTypes = {
   offers: offersProp,
   onOfferCardClick: PropTypes.func.isRequired,
-  isFavorites: PropTypes.bool,
-  isDetail: PropTypes.bool,
-  isMain: PropTypes.bool,
+  type: PropTypes.string.isRequired,
 };
 
 

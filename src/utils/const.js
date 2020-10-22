@@ -49,6 +49,12 @@ const offerClasses = {
   },
 };
 
+const OfferTypes = {
+  FAVOURITE: `isFavorites`,
+  DETAIL: `isDetail`,
+  MAIN: `isMain`,
+};
+
 
 export {
   TYPES,
@@ -67,5 +73,6 @@ export {
   REVIEWS_COUNT,
   COORDS,
   CITIES,
-  offerClasses
+  offerClasses,
+  OfferTypes,
 };

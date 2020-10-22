@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {OfferTypes} from '../../utils/const';
 import OfferList from '../offer-list/offer-list';
 import Header from '../header/header';
 import offersProp from '../offer-list/offers.prop';
@@ -27,7 +28,7 @@ const FavoritesScreen = ({offers, onOfferCardClick, onLogoClick}) => {
                   </div>
                 </div>
                 <OfferList
-                  isFavorites={true}
+                  type={OfferTypes.FAVOURITE}
                   onOfferCardClick={onOfferCardClick}
                   offers={offers}
                 />
@@ -42,7 +43,7 @@ const FavoritesScreen = ({offers, onOfferCardClick, onLogoClick}) => {
                   </div>
                 </div>
                 <OfferList
-                  isFavorites={true}
+                  type={OfferTypes.FAVOURITE}
                   onOfferCardClick={onOfferCardClick}
                   offers={offers}
                 />

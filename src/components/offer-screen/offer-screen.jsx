@@ -9,6 +9,7 @@ import OfferList from "../offer-list/offer-list";
 import offerProp from '../offer-card/offer.prop';
 import reviewsProp from '../review/review.prop';
 import offers from '../../mocks/offers';
+import {OfferTypes} from '../../utils/const';
 
 
 const OfferScreen = (props) => {
@@ -117,7 +118,7 @@ const OfferScreen = (props) => {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <OfferList
-              isDetail={true}
+              type={OfferTypes.DETAIL}
               onOfferCardClick={onOfferCardClick}
               offers={nearOffers}
             />

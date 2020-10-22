@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
+import {ActionCreator} from '../../store/action';
 import Map from '../../components/map/map';
 import Header from '../../components/header/header';
 import CitiesList from '../cities-list/cities-list';
-import {ActionCreator} from '../../store/action';
 import OfferList from '../offer-list/offer-list';
 import offersProp from '../offer-list/offers.prop';
+import {OfferTypes} from '../../utils/const';
 
 
 const MainPage = (props) => {
   const {offers, onOfferCardClick, cities, currentCity, onCityClick} = props;
-  const currentOffers = offers.filter((offer) => offer.city === currentCity);
 
   return (
     <div className="page page--gray page--main">
@@ -34,7 +34,7 @@ const MainPage = (props) => {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">
-                {currentOffers.length} places to stay in {currentCity}
+                {offers.length} places to stay in {currentCity}
               </b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
@@ -58,13 +58,14 @@ const MainPage = (props) => {
                 </select> */}
               </form>
               <OfferList
+                type={OfferTypes.MAIN}
                 onOfferCardClick={onOfferCardClick}
-                offers={currentOffers}
+                offers={offers}
               />
             </section>
             <div className="cities__right-section">
               <Map
-                offers={currentOffers}
+                offers={offers}
                 className={`cities`}
               />
             </div>
@@ -86,14 +87,16 @@ MainPage.propTypes = {
 
 
 const mapStateToProps = (state) => ({
-  offers: state.offers,
+  offers: state.currentOffers,
   cities: state.citiesList,
   currentCity: state.currentCity,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onCityClick: (city) => dispatch(ActionCreator.changeCity(city)),
-});
+  onCityClick: (city) => {
+    dispatch(ActionCreator.changeCity(city));
+    dispatch(ActionCreator.getOffers(city));
+  }});
 
 
 export {MainPage};

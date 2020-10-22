@@ -9,6 +9,7 @@ const citiesList = Array.from(
 
 const initialState = {
   offers,
+  currentOffers: offers,
   currentCity: citiesList[0],
   citiesList,
 };
@@ -16,8 +17,10 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_CITY:
+      return extend(state, {currentCity: action.city});
+    case ActionType.GET_OFFERS:
       return extend(state, {
-        currentCity: action.city
+        currentOffers: state.offers.filter((offer) => offer.city === action.city)
       });
     default: return state;
   }
