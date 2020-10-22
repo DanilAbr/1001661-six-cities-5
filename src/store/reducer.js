@@ -17,7 +17,9 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_CITY:
-      return extend(state, {currentCity: action.city});
+      return extend(state, {
+        currentCity: action.city
+      });
     case ActionType.GET_OFFERS:
       return extend(state, {
         currentOffers: state.offers.filter((offer) => offer.city === action.city)
