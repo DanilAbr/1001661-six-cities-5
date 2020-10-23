@@ -52,6 +52,13 @@ const SortLabel = {
   rated: `Top rated first`
 };
 
+const SortTypeEnum = {
+  low: (offers) => offers.sort((a, b) => a.price - b.price),
+  high: (offers) => offers.sort((a, b) => b.price - a.price),
+  rated: (offers) => offers.sort((a, b) => b.rating - a.rating),
+  popular: (offers) => offers,
+};
+
 
 export {
   TYPES,
@@ -71,5 +78,6 @@ export {
   CITIES,
   offerClasses,
   OfferTypes,
-  SortLabel
+  SortLabel,
+  SortTypeEnum,
 };

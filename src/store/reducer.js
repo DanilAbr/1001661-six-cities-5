@@ -1,11 +1,12 @@
 import offers from '../mocks/offers';
 import {ActionType} from './action';
-import {extend, sortOffer, getFilteredOffers} from '../utils/utils';
+import {extend} from '../utils/utils';
+import {SortTypeEnum} from '../utils/const';
 
 
 const citiesList = Array.from(new Set([...offers.map((offer) => offer.city)]));
 const currentCity = citiesList[0];
-const currentOffers = getFilteredOffers(offers, currentCity);
+const currentOffers = offers.filter((offer) => offer.city === currentCity);
 
 
 const initialState = {
@@ -27,8 +28,9 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.GET_FILTERED_OFFERS:
       return extend(state, {
-        currentOffers: getFilteredOffers(state.offers, action.city)
-      });
+        currentOffers: state.offers.filter((offer) =>
+          offer.city === action.city
+        )});
 
     case ActionType.CHANGE_SORT:
       return extend(state, {
@@ -38,12 +40,13 @@ const reducer = (state = initialState, action) => {
     case ActionType.GET_SORTED_OFFERS:
       if (action.sortType === initialState.sortType) {
         return extend(state, {
-          currentOffers: getFilteredOffers(state.offers, state.currentCity),
-        });
+          currentOffers: state.offers.filter((offer) =>
+            offer.city === state.currentCity
+          )});
       }
 
       return extend(state, {
-        currentOffers: sortOffer(state.currentOffers, action.sortType)
+        currentOffers: SortTypeEnum[action.sortType](state.currentOffers)
       });
 
     case ActionType.SELECT_CARD:
