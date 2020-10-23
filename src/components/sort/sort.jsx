@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {ActionCreator} from '../../store/action';
-
+import {SortLabel} from '../../utils/const';
 
 class Sort extends PureComponent {
   constructor(props) {
@@ -23,13 +23,6 @@ class Sort extends PureComponent {
 
   render() {
     const {onSortClick, sortType} = this.props;
-
-    const SortLabel = {
-      popular: `Popular`,
-      low: `Price: low to high`,
-      high: `Price: high to low`,
-      rated: `Top rated first`
-    };
 
     const sortTypes = Object.keys(SortLabel);
     const sortLabels = Object.values(SortLabel);

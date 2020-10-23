@@ -45,6 +45,13 @@ const OfferTypes = {
   MAIN: `isMain`,
 };
 
+const SortLabel = {
+  popular: `Popular`,
+  low: `Price: low to high`,
+  high: `Price: high to low`,
+  rated: `Top rated first`
+};
+
 
 export {
   TYPES,
@@ -64,4 +71,5 @@ export {
   CITIES,
   offerClasses,
   OfferTypes,
+  SortLabel
 };
