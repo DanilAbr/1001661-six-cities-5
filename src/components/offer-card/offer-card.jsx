@@ -12,13 +12,20 @@ class OfferCard extends PureComponent {
   }
 
   render() {
-    const {offer, onOfferCardClick, type, onCardHover} = this.props;
+    const {
+      offer,
+      onOfferCardClick,
+      type,
+      onCardHover,
+      onCardDeHover
+    } = this.props;
     const isFavorites = type === `isFavorites`;
 
     return (
       <article
         className={offerClasses[type].article}
         onMouseEnter={() => onCardHover(offer.id)}
+        onMouseLeave={() => onCardDeHover()}
         onClick={onOfferCardClick}
       >
         {!isFavorites && offer.isPremium &&
@@ -75,13 +82,18 @@ OfferCard.propTypes = {
   onOfferCardClick: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
   onCardHover: PropTypes.func.isRequired,
+  onCardDeHover: PropTypes.func.isRequired,
 };
 
 
 const mapDispatchToProps = (dispatch) => ({
   onCardHover: (cardId) => {
     dispatch(ActionCreator.selectCard(cardId));
-  }});
+  },
+  onCardDeHover: () => {
+    dispatch(ActionCreator.resetCard());
+  }
+});
 
 
 export {OfferCard};

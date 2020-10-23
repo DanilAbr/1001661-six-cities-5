@@ -4,6 +4,7 @@ const ActionType = {
   CHANGE_SORT: `CHANGE_SORT`,
   GET_SORTED_OFFERS: `GET_SORTED_OFFERS`,
   SELECT_CARD: `SELECT_CARD`,
+  RESET_CARD: `RESET_CARD`,
 };
 
 const ActionCreator = {
@@ -26,7 +27,10 @@ const ActionCreator = {
   selectCard: (offerId) => ({
     type: ActionType.SELECT_CARD,
     offerId,
-  })
+  }),
+  resetCard: () => ({
+    type: ActionType.RESET_CARD,
+  }),
 };
 
 

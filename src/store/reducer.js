@@ -54,6 +54,11 @@ const reducer = (state = initialState, action) => {
         currentCard: offers.filter((offer) => offer.id === action.offerId)[0]
       });
 
+    case ActionType.RESET_CARD:
+      return extend(state, {
+        currentCard: {}
+      });
+
     default: return state;
   }
 };
