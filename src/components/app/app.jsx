@@ -43,13 +43,15 @@ const App = ({offers, reviews}) => {
           render={({match, history}) => {
             const offer = offers.find((item) => item.id === match.params.id);
 
-            return <OfferScreen
-              offer={offer}
-              reviews={reviews}
-              onLogoClick={() => history.push(`/`)}
-              onOfferCardClick={(currentOffer) =>
-                history.push(`/offer/${currentOffer.id}`)}
-            />;
+            return (
+              <OfferScreen
+                offer={offer}
+                reviews={reviews}
+                onLogoClick={() => history.push(`/`)}
+                onOfferCardClick={(currentOffer) =>
+                  history.push(`/offer/${currentOffer.id}`)}
+              />
+            );
           }}
         />
       </Switch>
