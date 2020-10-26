@@ -18,9 +18,7 @@ const Review = ({review}) => {
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
-        <p className="reviews__text">
-          {review.text}
-        </p>
+        <p className="reviews__text">{review.text}</p>
         <time
           className="reviews__time"
           dateTime={review.date.toISOString().slice(0, 10)}

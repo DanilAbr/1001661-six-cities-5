@@ -10,10 +10,20 @@ import CitiesList from '../cities-list/cities-list';
 import OfferList from '../offer-list/offer-list';
 import Sort from '../sort/sort';
 import offersProp from '../offer-list/offers.prop';
+import withSort from '../../hocks/with-sort';
+
+const SortWrapped = withSort(Sort);
 
 
 const MainPage = (props) => {
-  const {offers, onOfferCardClick, cities, currentCity, onCityClick, sortType} = props;
+  const {
+    offers,
+    onOfferCardClick,
+    cities,
+    currentCity,
+    onCityClick,
+    sortType
+  } = props;
 
   return (
     <div className="page page--gray page--main">
@@ -37,7 +47,7 @@ const MainPage = (props) => {
               <b className="places__found">
                 {offers.length} places to stay in {currentCity}
               </b>
-              <Sort />
+              <SortWrapped />
               <OfferList
                 sortType={sortType}
                 type={OfferTypes.MAIN}
