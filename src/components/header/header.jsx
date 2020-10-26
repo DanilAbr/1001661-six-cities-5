@@ -35,7 +35,7 @@ const Header = ({onLogoClick, type}) => {
 
 Header.propTypes = {
   onLogoClick: PropTypes.func,
-  type: PropTypes.string.isRequired
+  type: PropTypes.string
 };
 
 

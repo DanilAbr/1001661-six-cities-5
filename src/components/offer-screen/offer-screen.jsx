@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {OfferTypes} from '../../utils/const';
+import offers from '../../mocks/offers';
 import NewReview from '../new-review/new-review';
 import Header from '../header/header';
 import ReviewList from '../review-list/review-list';
@@ -8,8 +10,9 @@ import Map from '../map/map';
 import OfferList from "../offer-list/offer-list";
 import offerProp from '../offer-card/offer.prop';
 import reviewsProp from '../review/review.prop';
-import offers from '../../mocks/offers';
-import {OfferTypes} from '../../utils/const';
+import withNewReview from '../../hocks/with-new-review';
+
+const NewReviewWrapped = withNewReview(NewReview);
 
 
 const OfferScreen = (props) => {
@@ -18,10 +21,7 @@ const OfferScreen = (props) => {
 
   return (
     <div className="page">
-      <Header
-        onLogoClick={onLogoClick}
-        type={OfferTypes.DETAIL}
-      />
+      <Header onLogoClick={onLogoClick} />
 
       <main className="page__main page__main--property">
         <section className="property">
@@ -106,7 +106,7 @@ const OfferScreen = (props) => {
               <section className="property__reviews reviews">
                 <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
                 <ReviewList reviews={reviews} />
-                <NewReview />
+                <NewReviewWrapped />
               </section>
             </div>
           </div>

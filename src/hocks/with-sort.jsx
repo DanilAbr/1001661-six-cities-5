@@ -1,5 +1,4 @@
 import React, {PureComponent} from 'react';
-import Sort from '../components/sort/sort';
 
 
 const withSort = (Component) => {
@@ -7,9 +6,7 @@ const withSort = (Component) => {
     constructor(props) {
       super(props);
 
-      this.state = {
-        listOpened: false,
-      };
+      this.state = {listOpened: false};
 
       this._handleSortLabelClick = this._handleSortLabelClick.bind(this);
     }

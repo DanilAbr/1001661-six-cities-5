@@ -90,7 +90,8 @@ const mapDispatchToProps = (dispatch) => ({
   onCityClick: (city) => {
     dispatch(ActionCreator.changeCity(city));
     dispatch(ActionCreator.getOffers(city));
-  }});
+  }
+});
 
 
 export {MainPage};
