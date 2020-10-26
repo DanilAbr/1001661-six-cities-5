@@ -15,8 +15,7 @@ import withNewReview from '../../hocks/with-new-review';
 const NewReviewWrapped = withNewReview(NewReview);
 
 
-const OfferScreen = (props) => {
-  const {offer, reviews, onLogoClick, onOfferCardClick} = props;
+const OfferScreen = ({offer, reviews, onLogoClick, onOfferCardClick}) => {
   const nearOffers = offers.slice(0, 3);
 
   return (
