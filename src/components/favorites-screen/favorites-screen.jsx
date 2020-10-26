@@ -5,6 +5,7 @@ import {OfferTypes} from '../../utils/const';
 import OfferList from '../offer-list/offer-list';
 import Header from '../header/header';
 import offersProp from '../offer-list/offers.prop';
+import {getUniqueCitiesOfOffers} from '../../utils/utils';
 
 
 const FavoritesScreen = ({offers, onOfferCardClick, onLogoClick}) => {
@@ -12,6 +13,7 @@ const FavoritesScreen = ({offers, onOfferCardClick, onLogoClick}) => {
     <div className="page">
       <Header
         onLogoClick={onLogoClick}
+        type={OfferTypes.FAVOURITE}
       />
 
       <main className="page__main page__main--favorites">
@@ -19,35 +21,21 @@ const FavoritesScreen = ({offers, onOfferCardClick, onLogoClick}) => {
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
             <ul className="favorites__list">
-              <li className="favorites__locations-items">
-                <div className="favorites__locations locations locations--current">
-                  <div className="locations__item">
-                    <a className="locations__item-link" href="#">
-                      <span>Amsterdam</span>
-                    </a>
+              {getUniqueCitiesOfOffers(offers).map((city, index) =>
+                <li className="favorites__locations-items" key={`city-${index}`}>
+                  <div className="favorites__locations locations locations--current">
+                    <div className="locations__item">
+                      <a className="locations__item-link" href="#">
+                        <span>{city}</span>
+                      </a>
+                    </div>
                   </div>
-                </div>
-                <OfferList
-                  type={OfferTypes.FAVOURITE}
-                  onOfferCardClick={onOfferCardClick}
-                  offers={offers}
-                />
-              </li>
-
-              <li className="favorites__locations-items">
-                <div className="favorites__locations locations locations--current">
-                  <div className="locations__item">
-                    <a className="locations__item-link" href="#">
-                      <span>Cologne</span>
-                    </a>
-                  </div>
-                </div>
-                <OfferList
-                  type={OfferTypes.FAVOURITE}
-                  onOfferCardClick={onOfferCardClick}
-                  offers={offers}
-                />
-              </li>
+                  <OfferList
+                    type={OfferTypes.FAVOURITE}
+                    onOfferCardClick={onOfferCardClick}
+                    offers={offers.filter((offer) => offer.city === city)}
+                  />
+                </li>)}
             </ul>
           </section>
         </div>

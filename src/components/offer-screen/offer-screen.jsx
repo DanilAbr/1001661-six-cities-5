@@ -20,6 +20,7 @@ const OfferScreen = (props) => {
     <div className="page">
       <Header
         onLogoClick={onLogoClick}
+        type={OfferTypes.DETAIL}
       />
 
       <main className="page__main page__main--property">

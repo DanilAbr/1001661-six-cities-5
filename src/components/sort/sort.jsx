@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {ActionCreator} from '../../store/action';
 import {SortLabel} from '../../utils/const';
 
+
 class Sort extends PureComponent {
   constructor(props) {
     super(props);

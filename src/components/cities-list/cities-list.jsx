@@ -15,7 +15,7 @@ const CitiesList = ({cities, currentCity, onCityClick}) => {
               evt.preventDefault();
               onCityClick(city);
             }}
-            className={`locations__item-link tabs__item ${city === currentCity ? `tabs__item--active` : ``}`}
+            className={`locations__item-link tabs__item${city === currentCity ? ` tabs__item--active` : ``}`}
             href="#"
           >
             <span>{city}</span>

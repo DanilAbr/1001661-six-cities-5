@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const Header = ({onLogoClick}) => {
+const Header = ({onLogoClick, type}) => {
   return (
     <header className="header">
       <div className="container">
@@ -10,7 +10,7 @@ const Header = ({onLogoClick}) => {
           <div className="header__left">
             <a
               onClick={onLogoClick}
-              className="header__logo-link header__logo-link--active"
+              className={`header__logo-link${type === `isMain` ? ` header__logo-link--active` : ``}`}
             >
               <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
             </a>
@@ -35,6 +35,7 @@ const Header = ({onLogoClick}) => {
 
 Header.propTypes = {
   onLogoClick: PropTypes.func,
+  type: PropTypes.string.isRequired
 };
 
 
