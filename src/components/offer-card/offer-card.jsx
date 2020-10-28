@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {offerClasses} from '../../utils/const';
-import {ActionCreator} from '../../store/action';
+import {resetCard, selectCard} from '../../store/action';
 import offerProp from './offer.prop';
 
 
@@ -76,10 +76,10 @@ OfferCard.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   onCardHover: (cardId) => {
-    dispatch(ActionCreator.selectCard(cardId));
+    dispatch(selectCard(cardId));
   },
   onCardDeHover: () => {
-    dispatch(ActionCreator.resetCard());
+    dispatch(resetCard());
   },
 });
 

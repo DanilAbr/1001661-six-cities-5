@@ -7,31 +7,43 @@ const ActionType = {
   RESET_CARD: `RESET_CARD`,
 };
 
-const ActionCreator = {
-  changeCity: (city) => ({
-    type: ActionType.CHANGE_CITY,
-    city,
-  }),
-  getOffers: (city) => ({
-    type: ActionType.GET_FILTERED_OFFERS,
-    city,
-  }),
-  changeSort: (sortType) => ({
-    type: ActionType.CHANGE_SORT,
-    sortType
-  }),
-  sortOffers: (sortType) => ({
-    type: ActionType.GET_SORTED_OFFERS,
-    sortType,
-  }),
-  selectCard: (offerId) => ({
-    type: ActionType.SELECT_CARD,
-    offerId,
-  }),
-  resetCard: () => ({
-    type: ActionType.RESET_CARD,
-  }),
+
+const changeCity = (city) => ({
+  type: ActionType.CHANGE_CITY,
+  city,
+});
+
+const getOffers = (city) => ({
+  type: ActionType.GET_FILTERED_OFFERS,
+  city,
+});
+
+const changeSort = (sortType) => ({
+  type: ActionType.CHANGE_SORT,
+  sortType
+});
+
+const sortOffers = (sortType) => ({
+  type: ActionType.GET_SORTED_OFFERS,
+  sortType,
+});
+
+const selectCard = (offerId) => ({
+  type: ActionType.SELECT_CARD,
+  offerId,
+});
+
+const resetCard = () => ({
+  type: ActionType.RESET_CARD,
+});
+
+
+export {
+  ActionType,
+  changeCity,
+  getOffers,
+  changeSort,
+  sortOffers,
+  selectCard,
+  resetCard
 };
-
-
-export {ActionType, ActionCreator};

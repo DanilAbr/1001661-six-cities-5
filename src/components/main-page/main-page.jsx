@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import {OfferTypes} from '../../utils/const';
-import {ActionCreator} from '../../store/action';
+import {changeCity, getOffers} from '../../store/action';
 import Map from '../../components/map/map';
 import Header from '../../components/header/header';
 import CitiesList from '../cities-list/cities-list';
@@ -97,8 +97,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onCityClick: (city) => {
-    dispatch(ActionCreator.changeCity(city));
-    dispatch(ActionCreator.getOffers(city));
+    dispatch(changeCity(city));
+    dispatch(getOffers(city));
   }
 });
 
