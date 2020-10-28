@@ -12,6 +12,7 @@ import Sort from '../sort/sort';
 import offersProp from '../offer-list/offers.prop';
 import withSort from '../../hocks/with-sort';
 import withOfferList from '../../hocks/with-offer-list';
+import MainEmpty from '../main-empty/main-empty';
 
 const SortWrapped = withSort(Sort);
 const OfferListWrapped = withOfferList(OfferList);
@@ -24,14 +25,14 @@ const MainPage = (props) => {
     cities,
     currentCity,
     onCityClick,
-    sortType
+    sortType,
   } = props;
 
   return (
     <div className="page page--gray page--main">
       <Header type={OfferTypes.MAIN} />
 
-      <main className="page__main page__main--index">
+      <main className={`page__main page__main--index${!offers.length ? ` page__main--index-empty` : ``}`}>
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
@@ -43,25 +44,31 @@ const MainPage = (props) => {
           </section>
         </div>
         <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">
-                {offers.length} places to stay in {currentCity}
-              </b>
-              <SortWrapped />
-              <OfferListWrapped
-                sortType={sortType}
-                type={OfferTypes.MAIN}
-                onOfferCardClick={onOfferCardClick}
-                offers={offers}
-              />
-            </section>
+          <div className={`cities__places-container${!offers.length ? ` cities__places-container--empty` : ``} container`}>
+            {offers.length
+              ? <section className="cities__places places">
+                <h2 className="visually-hidden">Places</h2>
+                <b className="places__found">
+                  {offers.length} places to stay in {currentCity}
+                </b>
+                <SortWrapped />
+                <OfferListWrapped
+                  sortType={sortType}
+                  type={OfferTypes.MAIN}
+                  onOfferCardClick={onOfferCardClick}
+                  offers={offers}
+                />
+              </section>
+              : <MainEmpty
+                currentCity={currentCity}
+              />}
             <div className="cities__right-section">
-              <Map
-                offers={offers}
-                className={`cities`}
-              />
+              {offers.length !== 0 &&
+                <Map
+                  offers={offers}
+                  className={`cities`}
+                />
+              }
             </div>
           </div>
         </div>

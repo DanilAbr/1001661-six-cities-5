@@ -1,10 +1,10 @@
 import offers from '../mocks/offers';
 import {ActionType} from './action';
 import {extend} from '../utils/utils';
-import {SortTypeEnum} from '../utils/const';
+import {CITIES, SortTypeEnum} from '../utils/const';
 
 
-const citiesList = Array.from(new Set([...offers.map((offer) => offer.city)]));
+const citiesList = CITIES;
 const currentCity = citiesList[0];
 const currentOffers = offers.filter((offer) => offer.city === currentCity);
 
