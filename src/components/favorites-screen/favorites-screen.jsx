@@ -6,9 +6,12 @@ import OfferList from '../offer-list/offer-list';
 import Header from '../header/header';
 import offersProp from '../offer-list/offers.prop';
 import {getUniqueCitiesOfOffers} from '../../utils/utils';
+import {connect} from 'react-redux';
 
 
 const FavoritesScreen = ({offers, onOfferCardClick, onLogoClick}) => {
+  const favoriteOffers = offers.filter((offer) => offer.is_favorite);
+
   return (
     <div className="page">
       <Header onLogoClick={onLogoClick} />
@@ -18,7 +21,7 @@ const FavoritesScreen = ({offers, onOfferCardClick, onLogoClick}) => {
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
             <ul className="favorites__list">
-              {getUniqueCitiesOfOffers(offers).map((city, index) =>
+              {getUniqueCitiesOfOffers(favoriteOffers).map((city, index) =>
                 <li className="favorites__locations-items" key={`city-${index}`}>
                   <div className="favorites__locations locations locations--current">
                     <div className="locations__item">
@@ -30,7 +33,7 @@ const FavoritesScreen = ({offers, onOfferCardClick, onLogoClick}) => {
                   <OfferList
                     type={OfferTypes.FAVOURITE}
                     onOfferCardClick={onOfferCardClick}
-                    offers={offers.filter((offer) => offer.city === city)}
+                    offers={favoriteOffers.filter((offer) => offer.city.name === city)}
                   />
                 </li>)}
             </ul>
@@ -54,4 +57,10 @@ FavoritesScreen.propTypes = {
 };
 
 
-export default FavoritesScreen;
+const mapStateToProps = (state) => ({
+  offers: state.offers,
+});
+
+
+export {FavoritesScreen};
+export default connect(mapStateToProps)(FavoritesScreen);

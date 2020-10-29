@@ -8,6 +8,7 @@ import FavoritesScreen from '../favorites-screen/favorites-screen';
 import OfferScreen from '../offer-screen/offer-screen';
 import offersProp from '../offer-list/offers.prop';
 import reviewsProp from '../review/review.prop';
+import {connect} from 'react-redux';
 
 
 const App = ({offers, reviews}) => {
@@ -32,7 +33,6 @@ const App = ({offers, reviews}) => {
         <Route exact path="/favorites"
           render={({history}) =>
             <FavoritesScreen
-              offers={offers}
               onLogoClick={() => history.push(`/`)}
               onOfferCardClick={(offer) =>
                 history.push(`/offer/${offer.id}`)}
@@ -41,7 +41,8 @@ const App = ({offers, reviews}) => {
         />
         <Route exact path="/offer/:id?"
           render={({match, history}) => {
-            const offer = offers.find((item) => item.id === match.params.id);
+
+            const offer = offers.find((item) => item.id === +match.params.id);
 
             return (
               <OfferScreen
@@ -65,5 +66,10 @@ App.propTypes = {
   reviews: PropTypes.arrayOf(reviewsProp).isRequired,
 };
 
+const mapStateToProps = (state) => ({
+  offers: state.currentOffers,
+});
 
-export default App;
+
+export {App};
+export default connect(mapStateToProps)(App);

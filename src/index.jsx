@@ -8,8 +8,8 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 
 import {reducer} from './store/reducer';
 import App from './components/app/app';
-import offers from './mocks/offers';
 import reviews from './mocks/reviews';
+import {fetchOffersList} from './store/api-actions';
 
 
 const api = createAPI();
@@ -21,13 +21,16 @@ const store = createStore(
     )
 );
 
-
-ReactDOM.render(
-    <Provider store={store}>
-      <App
-        offers={offers}
-        reviews={reviews}
-      />
-    </Provider>,
-    document.querySelector(`#root`)
-);
+Promise.all([
+  store.dispatch(fetchOffersList())
+])
+.then(() => {
+  ReactDOM.render(
+      <Provider store={store}>
+        <App
+          reviews={reviews}
+        />
+      </Provider>,
+      document.querySelector(`#root`)
+  );
+});

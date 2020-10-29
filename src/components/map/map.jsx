@@ -47,7 +47,10 @@ class Map extends PureComponent {
 
       this.markers.push(
           leaflet
-            .marker(offer.coords, {icon})
+            .marker([
+              offer.location.latitude,
+              offer.location.longitude
+            ], {icon})
             .addTo(this.map)
       );
     });

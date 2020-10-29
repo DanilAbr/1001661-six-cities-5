@@ -5,6 +5,7 @@ const ActionType = {
   GET_SORTED_OFFERS: `GET_SORTED_OFFERS`,
   SELECT_CARD: `SELECT_CARD`,
   RESET_CARD: `RESET_CARD`,
+  LOAD_OFFERS: `LOAD_OFFERS`,
 };
 
 
@@ -37,6 +38,11 @@ const resetCard = () => ({
   type: ActionType.RESET_CARD,
 });
 
+const loadOffers = (offers) => ({
+  type: ActionType.LOAD_OFFERS,
+  payload: offers,
+});
+
 
 export {
   ActionType,
@@ -45,5 +51,6 @@ export {
   changeSort,
   sortOffers,
   selectCard,
-  resetCard
+  resetCard,
+  loadOffers,
 };
