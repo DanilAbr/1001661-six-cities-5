@@ -1,10 +1,9 @@
-import {ActionType} from './action';
-import {extend} from '../utils/utils';
-import {CITIES, SortTypeEnum} from '../utils/const';
+import {ActionType} from '../action';
+import {extend} from '../../utils/utils';
+import {CITIES, SortTypeEnum} from '../../utils/const';
 
 
 const initialState = {
-  offers: [],
   currentCity: CITIES[0],
   currentOffers: [],
   citiesList: CITIES,
@@ -13,15 +12,8 @@ const initialState = {
 };
 
 
-const reducer = (state = initialState, action) => {
+const stateReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.LOAD_OFFERS:
-      return extend(state, {
-        offers: action.payload,
-        currentOffers: action.payload.filter((offer) =>
-          offer.city.name === state.currentCity
-        )});
-
     case ActionType.CHANGE_CITY:
       return extend(state, {
         currentCity: action.city
@@ -65,4 +57,4 @@ const reducer = (state = initialState, action) => {
 };
 
 
-export {reducer};
+export {stateReducer};

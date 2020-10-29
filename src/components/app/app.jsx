@@ -67,7 +67,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  offers: state.currentOffers,
+  offers: state.offers,
 });
 
 
