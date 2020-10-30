@@ -9,16 +9,23 @@ const fetchOffersList = () => (dispatch, _getState, api) => (
     .then((data) => dispatch(loadOffers(data)))
 );
 
-const checkAuth = () => (dispatch, _getState, api) => {
+const checkAuth = () => (dispatch, _getState, api) => (
   api.get(`/login`)
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
-    .catch((err) => {
-      throw err;
-    });
-};
+    .catch((_err) => {
+      // throw err;
+      return false;
+    })
+);
+
+const login = ({login: email, password}) => (dispatch, _getState, api) => (
+  api.post(`/login`, {email, password})
+    .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
+);
 
 
 export {
   fetchOffersList,
   checkAuth,
+  login
 };
