@@ -44,7 +44,7 @@ const loadOffers = (offers) => ({
   payload: offers,
 });
 
-const requiredAuthorization = () => ({
+const requireAuthorization = () => ({
   type: ActionType.REQUIRED_AUTHORIZATION,
   payload: status,
 });
@@ -59,5 +59,5 @@ export {
   resetCard,
   loadOffers,
   getOffersAction,
-  requiredAuthorization,
+  requireAuthorization,
 };

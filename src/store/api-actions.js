@@ -1,5 +1,6 @@
-import {loadOffers} from './action';
+import {loadOffers, requireAuthorization} from './action';
 import {convertData} from '../adapter/data';
+import {AuthorizationStatus} from '../utils/const';
 
 
 const fetchOffersList = () => (dispatch, _getState, api) => (
@@ -8,5 +9,16 @@ const fetchOffersList = () => (dispatch, _getState, api) => (
     .then((data) => dispatch(loadOffers(data)))
 );
 
+const checkAuth = () => (dispatch, _getState, api) => {
+  api.get(`/login`)
+    .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
+    .catch((err) => {
+      throw err;
+    });
+};
 
-export {fetchOffersList};
+
+export {
+  fetchOffersList,
+  checkAuth,
+};
