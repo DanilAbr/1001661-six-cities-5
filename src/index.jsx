@@ -10,6 +10,7 @@ import rootReducer from './store/reducers/root-reducer';
 import App from './components/app/app';
 import reviews from './mocks/reviews';
 import {checkAuth, fetchOffersList} from './store/api-actions';
+import {redirect} from './store/middlewares/redirect';
 
 
 const api = createAPI();
@@ -17,7 +18,8 @@ const api = createAPI();
 const store = createStore(
     rootReducer,
     composeWithDevTools(
-        applyMiddleware(thunk.withExtraArgument(api))
+        applyMiddleware(thunk.withExtraArgument(api)),
+        applyMiddleware(redirect)
     )
 );
 

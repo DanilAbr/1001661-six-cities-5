@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Router, Route, Switch} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import MainPage from '../main-page/main-page';
@@ -11,11 +11,12 @@ import reviewsProp from '../review/review.prop';
 import {connect} from 'react-redux';
 import PrivateRoute from '../private-route/private-route';
 import {getOffers} from '../../store/reducers/data/selectors';
+import browserHistory from '../../browser-history';
 
 
 const App = ({offers, reviews}) => {
   return (
-    <BrowserRouter>
+    <Router history={browserHistory}>
       <Switch>
         <Route
           exact
@@ -60,7 +61,7 @@ const App = ({offers, reviews}) => {
           }}
         />
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 };
 

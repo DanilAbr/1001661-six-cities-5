@@ -7,6 +7,7 @@ const ActionType = {
   RESET_CARD: `RESET_CARD`,
   LOAD_OFFERS: `LOAD_OFFERS`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
 };
 
 
@@ -44,9 +45,14 @@ const loadOffers = (offers) => ({
   payload: offers,
 });
 
-const requireAuthorization = () => ({
+const requireAuthorization = (status) => ({
   type: ActionType.REQUIRED_AUTHORIZATION,
   payload: status,
+});
+
+const redirectToRoute = (url) => ({
+  type: ActionType.REDIRECT_TO_ROUTE,
+  payload: url,
 });
 
 
@@ -60,4 +66,5 @@ export {
   loadOffers,
   getOffersAction,
   requireAuthorization,
+  redirectToRoute,
 };

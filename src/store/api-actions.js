@@ -1,4 +1,4 @@
-import {loadOffers, requireAuthorization} from './action';
+import {loadOffers, redirectToRoute, requireAuthorization} from './action';
 import {convertData} from '../adapter/data';
 import {AuthorizationStatus} from '../utils/const';
 
@@ -18,14 +18,15 @@ const checkAuth = () => (dispatch, _getState, api) => (
     })
 );
 
-const login = ({login: email, password}) => (dispatch, _getState, api) => (
+const loginAction = ({login: email, password}) => (dispatch, _getState, api) => (
   api.post(`/login`, {email, password})
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
+    .then(() => dispatch(redirectToRoute(`/`)))
 );
 
 
 export {
   fetchOffersList,
   checkAuth,
-  login
+  loginAction
 };

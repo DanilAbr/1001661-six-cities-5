@@ -8,6 +8,7 @@ import {Link} from 'react-router-dom';
 
 const Header = ({type, authorizationStatus}) => {
   const isAuth = authorizationStatus === AuthorizationStatus.AUTH;
+  const userLogin = localStorage.getItem(`login`);
 
   return (
     <header className="header">
@@ -32,7 +33,7 @@ const Header = ({type, authorizationStatus}) => {
                   <span
                     className="header__user-name user__name"
                   >
-                    {!isAuth ? `Sing In` : `Oliver.conner@gmail.com`}
+                    {!isAuth ? `Sing In` : userLogin}
                   </span>
                 </Link>
               </li>
@@ -52,7 +53,7 @@ Header.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    authorizationStatus: getAuthorizationStatus(state)
+    authorizationStatus: getAuthorizationStatus(state),
   };
 };
 

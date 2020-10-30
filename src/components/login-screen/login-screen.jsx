@@ -1,5 +1,5 @@
 import React, {PureComponent, createRef} from 'react';
-import {login} from '../../store/api-actions';
+import {loginAction} from '../../store/api-actions';
 import Header from '../header/header';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
@@ -17,12 +17,16 @@ class LoginScreen extends PureComponent {
 
   _handleSubmit(evt) {
     const {onSubmit} = this.props;
+    const login = this.loginRef.current.value;
+    const password = this.passwordRef.current.value;
 
     evt.preventDefault();
 
+    localStorage.setItem(`login`, JSON.stringify(login));
+
     onSubmit({
-      login: this.loginRef.current.value,
-      password: this.passwordRef.current.value,
+      login,
+      password,
     });
   }
 
@@ -89,7 +93,7 @@ LoginScreen.propTypes = {
 const mapDispatchToProps = (dispatch) => {
   return {
     onSubmit(authData) {
-      dispatch(login(authData));
+      dispatch(loginAction(authData));
     }
   };
 };
