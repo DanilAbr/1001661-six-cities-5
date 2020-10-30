@@ -9,14 +9,17 @@ import OfferScreen from '../offer-screen/offer-screen';
 import offersProp from '../offer-list/offers.prop';
 import reviewsProp from '../review/review.prop';
 import {connect} from 'react-redux';
-import {getOffers} from '../../store/reducers/app-state/selectors';
+import PrivateRoute from '../private-route/private-route';
+import {getOffers} from '../../store/reducers/data/selectors';
 
 
 const App = ({offers, reviews}) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/"
+        <Route
+          exact
+          path="/"
           render={({history}) =>
             <MainPage
               onOfferCardClick={(offer) =>
@@ -24,14 +27,18 @@ const App = ({offers, reviews}) => {
             />
           }
         />
-        <Route exact path="/login"
+        <Route
+          exact
+          path={`/login`}
           render={({history}) =>
             <LoginScreen
               onLogoClick={() => history.push(`/`)}
             />
           }
         />
-        <Route exact path="/favorites"
+        <PrivateRoute
+          exact
+          path={`/favorites`}
           render={({history}) =>
             <FavoritesScreen
               onLogoClick={() => history.push(`/`)}
@@ -40,7 +47,9 @@ const App = ({offers, reviews}) => {
             />
           }
         />
-        <Route exact path="/offer/:id?"
+        <Route
+          exact
+          path="/offer/:id?"
           render={({match, history}) => {
 
             const offer = offers.find((item) => item.id === +match.params.id);
