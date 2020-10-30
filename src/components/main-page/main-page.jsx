@@ -31,7 +31,7 @@ const MainPage = (props) => {
 
   return (
     <div className="page page--gray page--main">
-      <Header type={OfferTypes.MAIN} />
+      <Header type={OfferTypes.MAIN}/>
 
       <main className={`page__main page__main--index${!offers.length ? ` page__main--index-empty` : ``}`}>
         <h1 className="visually-hidden">Cities</h1>
@@ -45,14 +45,15 @@ const MainPage = (props) => {
           </section>
         </div>
         <div className="cities">
-          <div className={`cities__places-container${!offers.length ? ` cities__places-container--empty` : ``} container`}>
+          <div
+            className={`cities__places-container${!offers.length ? ` cities__places-container--empty` : ``} container`}>
             {offers.length
               ? <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
                 <b className="places__found">
                   {offers.length} places to stay in {currentCity}
                 </b>
-                <SortWrapped />
+                <SortWrapped/>
                 <OfferListWrapped
                   sortType={sortType}
                   type={OfferTypes.MAIN}
@@ -65,10 +66,10 @@ const MainPage = (props) => {
               />}
             <div className="cities__right-section">
               {offers.length !== 0 &&
-                <Map
-                  offers={offers}
-                  className={`cities`}
-                />
+              <Map
+                offers={offers}
+                className={`cities`}
+              />
               }
             </div>
           </div>
@@ -98,12 +99,14 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onCityClick: (city) => {
-    dispatch(changeCity(city));
-    dispatch(getOffersAction(city));
-  }
-});
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onCityClick: (city) => {
+      dispatch(changeCity(city));
+      dispatch(getOffersAction(city));
+    },
+  };
+};
 
 
 export {MainPage};

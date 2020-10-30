@@ -12,18 +12,18 @@ import reviewsProp from '../review/review.prop';
 import withNewReview from '../../hocks/with-new-review';
 import {connect} from 'react-redux';
 import offersProp from '../../components/offer-list/offers.prop';
-import {getOffers} from '../../store/reducers/app-state/selectors';
+import {getOffers} from '../../store/reducers/data/selectors';
 
 const NewReviewWrapped = withNewReview(NewReview);
 
 
-const OfferScreen = ({offers, offer, reviews, onLogoClick, onOfferCardClick}) => {
+const OfferScreen = ({offers, offer, reviews, onOfferCardClick}) => {
 
   const nearOffers = offers.slice(0, 3);
 
   return (
     <div className="page">
-      <Header onLogoClick={onLogoClick} />
+      <Header />
 
       <main className="page__main page__main--property">
         <section className="property">
@@ -136,7 +136,6 @@ const OfferScreen = ({offers, offer, reviews, onLogoClick, onOfferCardClick}) =>
 OfferScreen.propTypes = {
   offer: offerProp,
   reviews: PropTypes.arrayOf(reviewsProp).isRequired,
-  onLogoClick: PropTypes.func.isRequired,
   onOfferCardClick: PropTypes.func.isRequired,
   offers: offersProp,
 };

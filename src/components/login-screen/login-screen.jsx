@@ -1,12 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Header from '../header/header';
 
 
-const LoginScreen = ({onLogoClick}) => {
+const LoginScreen = () => {
   return (
     <div className="page page--gray page--login">
-      <Header onLogoClick={onLogoClick} />
+      <Header />
 
       <main className="page__main page__main--login">
         <div className="page__login-container container">
@@ -35,11 +34,6 @@ const LoginScreen = ({onLogoClick}) => {
       </main>
     </div>
   );
-};
-
-
-LoginScreen.propTypes = {
-  onLogoClick: PropTypes.func.isRequired,
 };
 
 

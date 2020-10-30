@@ -7,15 +7,15 @@ import Header from '../header/header';
 import offersProp from '../offer-list/offers.prop';
 import {getUniqueCitiesOfOffers} from '../../utils/utils';
 import {connect} from 'react-redux';
-import {getOffers} from '../../store/reducers/app-state/selectors';
+import {getOffers} from '../../store/reducers/data/selectors';
 
 
-const FavoritesScreen = ({offers, onOfferCardClick, onLogoClick}) => {
-  const favoriteOffers = offers.filter((offer) => offer.is_favorite);
+const FavoritesScreen = ({offers, onOfferCardClick}) => {
+  const favoriteOffers = offers.filter((offer) => offer.isFavorite);
 
   return (
     <div className="page">
-      <Header onLogoClick={onLogoClick} />
+      <Header />
 
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">
@@ -54,7 +54,6 @@ const FavoritesScreen = ({offers, onOfferCardClick, onLogoClick}) => {
 FavoritesScreen.propTypes = {
   offers: offersProp,
   onOfferCardClick: PropTypes.func.isRequired,
-  onLogoClick: PropTypes.func.isRequired,
 };
 
 

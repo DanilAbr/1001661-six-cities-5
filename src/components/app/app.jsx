@@ -30,18 +30,13 @@ const App = ({offers, reviews}) => {
         <Route
           exact
           path={`/login`}
-          render={({history}) =>
-            <LoginScreen
-              onLogoClick={() => history.push(`/`)}
-            />
-          }
+          render={() => <LoginScreen />}
         />
         <PrivateRoute
           exact
           path={`/favorites`}
           render={({history}) =>
             <FavoritesScreen
-              onLogoClick={() => history.push(`/`)}
               onOfferCardClick={(offer) =>
                 history.push(`/offer/${offer.id}`)}
             />
@@ -58,7 +53,6 @@ const App = ({offers, reviews}) => {
               <OfferScreen
                 offer={offer}
                 reviews={reviews}
-                onLogoClick={() => history.push(`/`)}
                 onOfferCardClick={(currentOffer) =>
                   history.push(`/offer/${currentOffer.id}`)}
               />
