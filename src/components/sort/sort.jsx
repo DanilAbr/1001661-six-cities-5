@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {changeSort, sortOffers} from '../../store/action';
 import {SortLabel} from '../../utils/const';
+import {getSortType} from '../../store/reducers/app-state/selectors';
 
 
 const Sort = ({onSortClick, sortType, isOpened, onLabelClick}) => {
@@ -63,7 +64,7 @@ Sort.propTypes = {
 
 
 const mapStateToProps = (state) => ({
-  sortType: state.sortType,
+  sortType: getSortType(state),
 });
 
 

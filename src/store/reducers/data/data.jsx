@@ -1,5 +1,5 @@
-import {ActionType} from '../action';
-import {extend} from '../../utils/utils';
+import {ActionType} from '../../action';
+import {extend} from '../../../utils/utils';
 
 
 const initialState = {
@@ -7,7 +7,7 @@ const initialState = {
 };
 
 
-const dataReducer = (state = initialState, action) => {
+const data = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.LOAD_OFFERS:
       return extend(state, {
@@ -19,4 +19,4 @@ const dataReducer = (state = initialState, action) => {
 };
 
 
-export {dataReducer};
+export {data};

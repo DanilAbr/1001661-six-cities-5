@@ -7,6 +7,7 @@ import Header from '../header/header';
 import offersProp from '../offer-list/offers.prop';
 import {getUniqueCitiesOfOffers} from '../../utils/utils';
 import {connect} from 'react-redux';
+import {getOffers} from '../../store/reducers/app-state/selectors';
 
 
 const FavoritesScreen = ({offers, onOfferCardClick, onLogoClick}) => {
@@ -58,7 +59,7 @@ FavoritesScreen.propTypes = {
 
 
 const mapStateToProps = (state) => ({
-  offers: state.offers,
+  offers: getOffers(state),
 });
 
 

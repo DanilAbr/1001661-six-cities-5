@@ -5,6 +5,7 @@ import 'leaflet/dist/leaflet.css';
 import leaflet from 'leaflet';
 import offersProp from '../offer-list/offers.prop';
 import offerProp from '../offer-card/offer.prop';
+import {getActiveCard} from '../../store/reducers/app-state/selectors';
 
 
 class Map extends PureComponent {
@@ -40,10 +41,11 @@ class Map extends PureComponent {
     const {offers, currentCard} = this.props;
 
     offers.map((offer) => {
-      const icon = leaflet.icon({
-        iconUrl: `img/pin${offer.id === currentCard.id ? `-active` : ``}.svg`,
-        iconSize: [30, 30]
-      });
+      let iconUrl = `img/pin.svg`;
+      if (currentCard) {
+        iconUrl = `img/pin${offer.id === currentCard.id ? `-active` : ``}.svg`;
+      }
+      const icon = leaflet.icon({iconUrl, iconSize: [30, 30]});
 
       this.markers.push(
           leaflet
@@ -79,13 +81,15 @@ class Map extends PureComponent {
 Map.propTypes = {
   offers: offersProp,
   className: PropTypes.string.isRequired,
-  currentCard: PropTypes.oneOfType([PropTypes.object, offerProp]).isRequired,
+  currentCard: PropTypes.oneOfType([PropTypes.object, offerProp]),
 };
 
 
-const mapStateToProps = (state) => ({
-  currentCard: state.currentCard,
-});
+const mapStateToProps = (state) => {
+  return {
+    currentCard: getActiveCard(state)
+  };
+};
 
 
 export {Map};

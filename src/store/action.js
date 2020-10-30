@@ -14,7 +14,7 @@ const changeCity = (city) => ({
   city,
 });
 
-const getOffers = (city) => ({
+const getOffersAction = (city) => ({
   type: ActionType.GET_FILTERED_OFFERS,
   city,
 });
@@ -47,10 +47,10 @@ const loadOffers = (offers) => ({
 export {
   ActionType,
   changeCity,
-  getOffers,
   changeSort,
   sortOffers,
   selectCard,
   resetCard,
   loadOffers,
+  getOffersAction
 };

@@ -12,6 +12,7 @@ import reviewsProp from '../review/review.prop';
 import withNewReview from '../../hocks/with-new-review';
 import {connect} from 'react-redux';
 import offersProp from '../../components/offer-list/offers.prop';
+import {getOffers} from '../../store/reducers/app-state/selectors';
 
 const NewReviewWrapped = withNewReview(NewReview);
 
@@ -112,8 +113,8 @@ const OfferScreen = ({offers, offer, reviews, onLogoClick, onOfferCardClick}) =>
             </div>
           </div>
           <Map
-            className={`property`}
             offers={nearOffers}
+            className={`property`}
           />
         </section>
         <div className="container">
@@ -141,7 +142,7 @@ OfferScreen.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  offers: state.currentOffers,
+  offers: getOffers(state),
 });
 
 export {OfferScreen};

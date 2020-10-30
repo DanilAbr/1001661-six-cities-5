@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import {OfferTypes} from '../../utils/const';
-import {changeCity, getOffers} from '../../store/action';
+import {changeCity, getOffersAction} from '../../store/action';
 import Map from '../../components/map/map';
 import Header from '../../components/header/header';
 import CitiesList from '../cities-list/cities-list';
@@ -13,6 +13,7 @@ import offersProp from '../offer-list/offers.prop';
 import withSort from '../../hocks/with-sort';
 import withOfferList from '../../hocks/with-offer-list';
 import MainEmpty from '../main-empty/main-empty';
+import {getCitiesList, getCurrentCity, getCurrentOffers, getSortType} from '../../store/reducers/app-state/selectors';
 
 const SortWrapped = withSort(Sort);
 const OfferListWrapped = withOfferList(OfferList);
@@ -88,17 +89,19 @@ MainPage.propTypes = {
 };
 
 
-const mapStateToProps = (state) => ({
-  sortType: state.sortType,
-  offers: state.currentOffers,
-  cities: state.citiesList,
-  currentCity: state.currentCity,
-});
+const mapStateToProps = (state) => {
+  return {
+    sortType: getSortType(state),
+    offers: getCurrentOffers(state),
+    cities: getCitiesList(state),
+    currentCity: getCurrentCity(state),
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   onCityClick: (city) => {
     dispatch(changeCity(city));
-    dispatch(getOffers(city));
+    dispatch(getOffersAction(city));
   }
 });
 

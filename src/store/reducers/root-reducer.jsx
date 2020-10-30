@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
-import {dataReducer} from './data-reducer';
-import {stateReducer} from './state-reducer';
+import {data} from './data/data';
+import {appState} from './app-state/app-state';
 
 
 const NameSpace = {
@@ -9,7 +9,8 @@ const NameSpace = {
 };
 
 
+export {NameSpace};
 export default combineReducers({
-  [NameSpace.DATA]: dataReducer,
-  [NameSpace.STATE]: stateReducer,
+  [NameSpace.DATA]: data,
+  [NameSpace.STATE]: appState,
 });

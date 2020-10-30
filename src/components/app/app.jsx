@@ -9,6 +9,7 @@ import OfferScreen from '../offer-screen/offer-screen';
 import offersProp from '../offer-list/offers.prop';
 import reviewsProp from '../review/review.prop';
 import {connect} from 'react-redux';
+import {getOffers} from '../../store/reducers/app-state/selectors';
 
 
 const App = ({offers, reviews}) => {
@@ -67,7 +68,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  offers: state.offers,
+  offers: getOffers(state),
 });
 
 
