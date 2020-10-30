@@ -6,6 +6,7 @@ const ActionType = {
   SELECT_CARD: `SELECT_CARD`,
   RESET_CARD: `RESET_CARD`,
   LOAD_OFFERS: `LOAD_OFFERS`,
+  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
 };
 
 
@@ -43,6 +44,11 @@ const loadOffers = (offers) => ({
   payload: offers,
 });
 
+const requiredAuthorization = () => ({
+  type: ActionType.REQUIRED_AUTHORIZATION,
+  payload: status,
+});
+
 
 export {
   ActionType,
@@ -52,5 +58,6 @@ export {
   selectCard,
   resetCard,
   loadOffers,
-  getOffersAction
+  getOffersAction,
+  requiredAuthorization,
 };
