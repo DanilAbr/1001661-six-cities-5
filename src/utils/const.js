@@ -50,6 +50,11 @@ const SortTypeEnum = {
   popular: (offers) => offers,
 };
 
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
+
 
 export {
   AVATAR_URL,
@@ -62,4 +67,5 @@ export {
   OfferTypes,
   SortLabel,
   SortTypeEnum,
+  AuthorizationStatus,
 };
